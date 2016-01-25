@@ -1,0 +1,43 @@
+<template>
+<buttons class="btn btn--{{theme}} {{state}}" :type="type"
+  :disabled="isDisabled"
+  @click.stop="clickHandle">
+  <slot name="content"><slot>
+</buttons>
+</template>
+
+<script>
+export default {
+  name: 'component-buttons',
+  props: {
+    theme: {
+      type    : String,
+      default : 'basis'
+    },
+    state: {
+      type    : String,
+      default : ''
+    },
+    type: {
+      type    : String,
+      default : 'button'
+    },
+    eventName: {
+      type    : String,
+      default : 'btn-click'
+    }
+  },
+
+  computed : {
+    isDisabled () {
+      return this.state === 'disabled'
+    }
+  },
+
+  methods:{
+    clickHandle () {
+      this.$dispatch(this.eventName)
+    }
+  }
+}
+</script>

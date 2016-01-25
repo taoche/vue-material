@@ -1,23 +1,13 @@
 {
-    "name": "vuetest",
-    "version": "0.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "server": "./node_modules/.bin/webpack-dev-server --hot --config webpack.server.js",
-        "build": "webpack --config webpack.production.js",
-        "watch": "webpack --watch"
-    },
-    "dependencies": {
-        "vue-router": "^0.5.1",
-        "vue-resource": "^0.1.13",
-        "vue": "^0.12.10"
-    },
-    "devDependencies": {
-        "vue-loader": "^3.0.3",
-        "babel-loader": "^5.3.2",
-        "babel-runtime": "^5.8.20",
-        "webpack": "^1.11.0",
-        "webpack-dev-server": "^1.10.1"
-    }
+  "name": "vue-material-ui",
+  "version": "0.0.30",
+  "description": "a UI Components use vue and Material Design",
+  "repository": {
+    "type": "git",
+    "url": "taoche/vue-material"
+  },
+  "main": "index.js",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {}
 }

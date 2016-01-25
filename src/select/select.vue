@@ -1,0 +1,149 @@
+<template>
+<div class="component-select">
+  <div class='select-block'>
+    <div class="m-select" @click.stop="showDropdownList">
+      {{selected}}
+      <i class="select-triangle" :class="{'open': showList}">
+        <svg width="8px" height="15px" viewBox="0 0 50 80" xml:space="preserve">
+        <polyline fill="none" stroke="#4e647b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375 "/>
+      </svg>
+      </i>
+    </div>
+
+    <slot name="selectList">
+      <ul class="list-box shadow--2dp" v-if="showList" v-el:select-list>
+        <li v-for="item in values" track-by="$index"
+          :class="{'active': item === selected}"
+          @click="select(item, $index)">{{item}}</li>
+      </ul>
+    </slot>
+  </div>
+</div>
+</template>
+
+<script >
+export default {
+  name: 'component-select',
+  props: {
+    values: {
+      required : true
+    },
+    index    : null,
+    selected : null
+  },
+  data () {
+    return {
+      showList : false
+    }
+  },
+  methods: {
+    select (item, index) {
+      this.showList = false
+      this.selected = item
+      this.index    = index
+    },
+
+    showDropdownList () {
+      this.$dispatch('component-select-show-list', this.showList)
+      this.showList = !this.showList
+
+      if (!this.showList) return false
+
+      this.$nextTick(() => {
+        this.computedHeight(this.$els.selectList)
+      })
+    },
+
+    computedHeight (el) {
+      el.style.height = (() => {
+        let height = 0
+        Array.from(el.childNodes).forEach((child)=>{
+          if (child.nodeType === 1) {
+            let _style = window.getComputedStyle(child)
+            height += child.clientHeight +
+              (parseInt(_style.borderTopWidth, 10) || 0) +
+              (parseInt(_style.borderBottomWidth, 10) || 0)
+          }
+        })
+        return height
+      })() + 'px'
+    }
+  },
+
+  ready () {
+    document.addEventListener('click', (evnet)=>{
+      this.showList = false
+    })
+  }
+}
+</script>
+
+<style lang='scss'>
+.component-select {
+  position: relative;
+
+  display: inline-block;
+  .m-select {
+    font-size: 16px;
+    line-height: 32px;
+
+    position: relative;
+
+    display: inline-block;
+
+    box-sizing: border-box;
+    min-width: 180px;
+    width: 100%;
+    height: 32px;
+    padding-left: 10px;
+
+    border-bottom: 1px solid #aaa;
+    outline: none;
+    &:focus,
+    &:hover {
+      border-bottom: 2px solid #3c80f6;
+      .select-triangle {
+        polyline{
+          stroke: #3c80f6;
+        }
+      }
+    }
+    .select-triangle {
+      position: absolute;
+      right: 0;
+      transform: rotate(-90deg);
+      transition: transform .3s ease-in-out;
+
+      &.open {
+        transform: rotate(90deg);
+      }
+    }
+  }
+  .list-box {
+    position: absolute;
+    z-index: 1;
+    top: 32px;
+
+    width: 180px;
+    height: 0;
+    border-radius: 2px;
+    background-color: #fff;
+    transition: height .3s ease-in-out;
+    overflow: hidden;
+    li {
+      overflow: hidden;
+      padding: 5px 0;
+      cursor: pointer;
+      white-space: nowrap;
+      text-indent: 20px;
+      text-overflow: ellipsis;
+
+      color: rgba(0, 0, 0, .87);
+      &:focus,
+      &:hover,&.active {
+        background: rgba(0, 0, 0, .031);
+      }
+    }
+  }
+}
+</style>
