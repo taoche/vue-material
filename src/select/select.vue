@@ -110,7 +110,7 @@ export default {
     }
     .select-triangle {
       position: absolute;
-      right: 0;
+      right: 5px;
       transform: rotate(-90deg);
       transition: transform .3s ease-in-out;
 

@@ -31,10 +31,10 @@ export default {
   display: inline-block;
   &.large {
     .avatar {
-      width: 60px;
-      height: 60px;
       line-height: 60px;
 
+      width: 60px;
+      height: 60px;
       .letter {
         font-size: 26px;
       }
@@ -42,27 +42,31 @@ export default {
   }
   &.small {
     .avatar {
+      line-height: 24px;
+
       width: 24px;
       height: 24px;
-      line-height: 24px;
       .letter {
         font-size: 12px;
       }
     }
   }
   .avatar {
-    overflow: hidden;
+    font-size: 0;
+    line-height: 41px;
+
+    display: inline-block;
 
     box-sizing: border-box;
     width: 41px;
     height: 41px;
-    line-height: 41px;
+
     text-align: center;
     vertical-align: middle;
-    background-color: #0884CE;
-    border-radius: 50%;
-    font-size: 0;
+
     color: #fff;
+    border-radius: 50%;
+    background-color: #0884ce;
     .img {
       display: block;
 
@@ -73,10 +77,9 @@ export default {
       background-repeat: no-repeat;
       background-position: center;
     }
-
     .letter {
-        font-size: 18px;
-      }
+      font-size: 18px;
+    }
   }
 }
 </style>

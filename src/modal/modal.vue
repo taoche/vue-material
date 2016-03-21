@@ -1,5 +1,5 @@
 <template>
-<div class="modal-mask" v-if="show" @click.stop>
+<div class="modal-mask" v-if="show">
   <div class="modal-wrapper">
     <div class="modal-container shadow--4dp" v-el:container>
 
@@ -17,7 +17,7 @@
 
       <div class="modal-footer">
         <slot name="footer">
-          <component-buttons ><span slot="content">确认</span></component-buttons>
+          <component-buttons><span slot="content">确认</span></component-buttons>
         </slot>
       </div>
     </div>

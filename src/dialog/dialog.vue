@@ -1,5 +1,5 @@
 <template>
-<div class="dialog-mask" v-if="show" transition="dialog" @click.stop>
+<div class="dialog-mask" v-if="show" transition="dialog">
   <div class="dialog-wrapper">
     <div class="dialog-container shadow--4dp">
       <span class="dialog-close" @click.stop="show = false">
@@ -48,8 +48,8 @@ export default {
     transform: translate3d(0px, 0px, 0px);
     vertical-align: middle;
     .dialog-container {
-      width: 500px;
-      height: 300px;
+      min-width: 500px;
+      min-height: 300px;
 
       position: relative;
       margin: 0 auto;
