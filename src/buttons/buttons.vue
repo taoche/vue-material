@@ -1,14 +1,14 @@
 <template>
-<buttons class="btn btn--{{theme}} {{state}}" :type="type"
+<button class="btn btn--{{theme}} {{state}}" :type="type"
   :disabled="isDisabled"
   @click.stop="clickHandle">
   <slot name="content"><slot>
-</buttons>
+</button>
 </template>
 
 <script>
 export default {
-  name: 'component-buttons',
+  name: 'component-button',
   props: {
     theme: {
       type    : String,
@@ -27,13 +27,11 @@ export default {
       default : 'btn-click'
     }
   },
-
   computed : {
     isDisabled () {
       return this.state === 'disabled'
     }
   },
-
   methods:{
     clickHandle () {
       this.$dispatch(this.eventName)
