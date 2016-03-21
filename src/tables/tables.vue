@@ -77,52 +77,41 @@ export default {
 <style lang="scss">
 .component-table {
   position: relative;
-
   width: 100%;
   margin: 0 auto;
   padding-top: 48px;
-
   border: 1px solid rgba(0, 0, 0, .12);
   background: #fff;
-  .container {
+  & > .container {
     overflow-y: auto;
     table {
       width: 100%;
-
       border-spacing: 0;
       td,
       th {
         font-size: 14px;
         font-weight: 100;
         line-height: 48px;
-
         height: 48px;
         padding: 0 25px;
-
         color: #757575;
       }
       th {
         line-height: 0;
-
         height: 0;
         padding-top: 0;
         padding-bottom: 0;
-
         white-space: nowrap;
-
         color: transparent;
         border: none;
       }
       thead {
         th > div {
           line-height: normal;
-
           position: absolute;
           top: 0;
-
           margin-left: -25px;
           padding: 15px 25px;
-
           color: rgba(0, 0, 0, .54);
           background: transparent;
         }
@@ -144,4 +133,5 @@ export default {
     }
   }
 }
+
 </style>

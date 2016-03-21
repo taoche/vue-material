@@ -33,41 +33,32 @@ export default {
   z-index: 9998;
   top: 0;
   left: 0;
-
   display: table;
-
   width: 100%;
   height: 100%;
-
   transition: opacity .3s ease;
-
   background-color: rgba(0, 0, 0, .5);
   .dialog-wrapper {
     display: table-cell;
-
     transform: translate3d(0px, 0px, 0px);
     vertical-align: middle;
     .dialog-container {
+      position: relative;
+      display: flex;
       min-width: 500px;
       min-height: 300px;
-
-      position: relative;
       margin: 0 auto;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
       transition: all .3s ease;
-
       border-radius: 2px;
       background-color: #fff;
+
+      justify-content: center;
+      align-items: center;
       .dialog-close {
         position: absolute;
         z-index: 1000;
         top: 8px;
         right: 5px;
-
         cursor: pointer;
         transition: all .3s;
         svg:hover {

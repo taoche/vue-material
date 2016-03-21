@@ -23,13 +23,12 @@ export default {
 <style lang="scss">
 .component-toolbar {
   display: flex;
-
   box-sizing: border-box;
   width: 100%;
   padding: 0 0 0 8px;
-
   align-items: center;
   justify-content: space-between;
+
   %items-common {
     display: flex;
 

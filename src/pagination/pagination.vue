@@ -149,13 +149,13 @@ export default {
 <style lang="scss">
 .component-pagination {
   margin-top: 20px;
-  svg{
-    vertical-align: middle;
+  svg {
     cursor: pointer;
     -webkit-user-select: none;
-    &:hover{
-      polyline{
-        stroke: rgba(0,0,0,.87)
+    vertical-align: middle;
+    &:hover {
+      polyline {
+        stroke: rgba(0,0,0,.87);
       }
     }
   }

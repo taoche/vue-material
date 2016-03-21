@@ -6,9 +6,7 @@
   </span>
 
   <span class="list-item-secondary-action">
-    <slot name="action">
-
-    </slot>
+    <slot name="action"></slot>
   </span>
 </li>
 </template>

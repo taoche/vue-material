@@ -128,45 +128,35 @@ export default {
   z-index: 999;
   top: 0;
   left: 0;
-
   display: inline-block;
-
   transition: transform .3s cubic-bezier(.4,0,.2,1),opacity .2s cubic-bezier(.4,0,.2,1);
   transform: scale(1);
-
   opacity: 1;
 
   will-change: transform;
   .menu-container {
     font-size: 15px;
     line-height: 32px;
-
     box-sizing: border-box;
     padding: 8px 0;
-
     border-radius: 2px;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .239216) 0 1px 4px;
     ul {
       margin: 0;
       padding: 8px 0;
-
       border-bottom: 1px solid rgb(224, 224, 224);
       a {
         position: relative;
-
         display: inline-block;
-
         box-sizing: border-box;
         width: 100%;
         height: auto;
         padding: 0 16px;
-
         color: rgba(0, 0, 0, .870588);
         background-color: #fff;
         li {
           display: flex;
-
           list-style: none;
 
           justify-content: space-between;
@@ -186,7 +176,6 @@ export default {
         }
         &.disabled {
           cursor: default;
-
           color: rgba(0, 0, 0, .298039);
           i {
             color: rgba(0, 0, 0, .298039);
@@ -194,7 +183,6 @@ export default {
         }
         &.disabled:hover {
           cursor: default;
-
           background-color: #fff;
           i {
             color: rgba(0, 0, 0, .298039);
@@ -209,9 +197,7 @@ export default {
   &.menu-enter,
   &.menu-leave {
     z-index: -1;
-
     transform: scale(0);
-
     opacity: 0;
   }
 }

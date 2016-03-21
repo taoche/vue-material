@@ -53,22 +53,18 @@
   position: fixed;
   bottom: 10px;
   left: 10px;
-
   display: flex;
-
   min-width: 88px;
   height: 36px;
   padding: 10px;
-
   border-radius: 2px;
   background-color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .239216) 0 1px 4px;
-
   justifycontent: space-between;
+
   p {
     font-size: 15px;
     line-height: 36px;
-
     margin: 0;
     margin-right: 50px;
     padding: 0;

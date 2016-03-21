@@ -12,11 +12,9 @@
   position: absolute;
   top: 20%;
   left: 50%;
-
   width: 50px;
   height: 50px;
   margin-left: -25px;
-
   animation: rotate 2s linear infinite;
   .path {
     animation: dash 1.5s ease-in-out infinite,

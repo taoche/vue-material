@@ -50,22 +50,20 @@ export default {
 <style lang="scss">
 .component-search {
   position: relative;
-
   display: flex;
-
   width: 100%;
   height: 100%;
-
-  justify-content: center;
-  align-items: center;
   padding: 10px 10px;
   border: 1px solid rgba(0,0,0,.16);
   border-radius: 2px;
 
+  justify-content: center;
+  align-items: center;
   svg {
-    fill: rgba(0,0,0,.56);
     width: 15px;
     height: 15px;
+
+    fill: rgba(0,0,0,.56);
   }
   .search {
     margin: auto 8px;
@@ -73,9 +71,7 @@ export default {
   }
   .search-input {
     box-sizing: border-box;
-
     text-indent: 10px;
-
     color: rgba(0,0,0,.56);
     border: none;
     outline: none;
@@ -83,7 +79,7 @@ export default {
 
     flex: 1;
     &::-webkit-input-placeholder {
-      color: rgba(0,0,0,.56)
+      color: rgba(0,0,0,.56);
     }
   }
 }

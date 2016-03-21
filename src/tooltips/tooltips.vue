@@ -94,17 +94,14 @@ export default {
 <style lang="scss">
 .component-tooltip {
   position: absolute;
-
   transition: transform .3s ease;
+
   .tooltip-container {
     font-size: 10px;
     line-height: 22px;
-
     overflow: hidden;
-
     height: 22px;
     padding: 0 8px;
-
     opacity: .9;
     color: #fff;
     border-radius: 2px;
@@ -113,7 +110,6 @@ export default {
   &.tooltip-enter,
   &.tooltip-leave {
     transform: scale(1.1);
-
     opacity: 0;
   }
 }

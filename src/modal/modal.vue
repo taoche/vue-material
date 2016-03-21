@@ -45,27 +45,20 @@ export default {
   z-index: 9998;
   top: 0;
   left: 0;
-
   display: table;
-
   width: 100%;
   height: 100%;
-
   transition: opacity .3s ease;
-
   background-color: rgba(0, 0, 0, .5);
   .modal-wrapper {
     display: table-cell;
-
     vertical-align: middle;
   }
   .modal-container {
     width: 400px;
     margin: 0 auto;
     padding-bottom: 22px;
-
     transition: all .3s ease;
-
     border-radius: 2px;
     background-color: #fff;
     .modal-header {
@@ -78,7 +71,6 @@ export default {
     }
     .modal-footer {
       overflow: hidden;
-
       padding: 3px 22px !important;
     }
   }

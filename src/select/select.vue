@@ -81,22 +81,17 @@ export default {
 <style lang='scss'>
 .component-select {
   position: relative;
-
   display: inline-block;
   .m-select {
     font-size: 16px;
     line-height: 32px;
-
     position: relative;
-
     display: inline-block;
-
     box-sizing: border-box;
     width: 100%;
     min-width: 180px;
     height: 32px;
     padding-left: 10px;
-
     border-bottom: 1px solid #e0e0e0;
     outline: none;
     &:focus,
@@ -111,11 +106,8 @@ export default {
     .select-triangle {
       position: absolute;
       right: 5px;
-
       width: 12px;
-
       transform: rotate(90deg);
-
       color: rgba(0, 0, 0, .54);
       svg {
         transition: transform .3s ease-in-out;
@@ -131,26 +123,19 @@ export default {
     position: absolute;
     z-index: 1;
     top: 32px;
-
     overflow: hidden;
-
     width: 180px;
     height: 0;
-
     transition: height .3s ease-in-out;
-
     border-radius: 2px;
     background-color: #fff;
     li {
       overflow: hidden;
-
       padding: 5px 0;
-
       cursor: pointer;
       white-space: nowrap;
       text-indent: 20px;
       text-overflow: ellipsis;
-
       color: rgba(0, 0, 0, .87);
       &:focus,
       &:hover,

@@ -180,12 +180,9 @@ export default {
   z-index: 998;
   top: 0;
   left: 0;
-
   width: 100%;
   height: 100%;
-
   transition: opacity .3s ease;
-
   background-color: rgba(0, 0, 0, .5);
   .date-picker-wrapper {
     position: absolute;
@@ -193,14 +190,11 @@ export default {
     left: 0;
     .date-picker-container {
       z-index: 999;
-
       width: 320px;
       margin: 0 auto;
-
       -webkit-user-select: none;
       transition: all .3s ease;
       text-align: center;
-
       border-radius: 2px;
       background: #fff;
       box-shadow: 0 14px 45px rgba(0, 0, 0, .25), 0 10px 18px rgba(0, 0, 0, .22);

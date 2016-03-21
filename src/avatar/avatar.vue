@@ -32,7 +32,6 @@ export default {
   &.large {
     .avatar {
       line-height: 60px;
-
       width: 60px;
       height: 60px;
       .letter {
@@ -43,7 +42,6 @@ export default {
   &.small {
     .avatar {
       line-height: 24px;
-
       width: 24px;
       height: 24px;
       .letter {
@@ -54,25 +52,19 @@ export default {
   .avatar {
     font-size: 0;
     line-height: 41px;
-
     display: inline-block;
-
     box-sizing: border-box;
     width: 41px;
     height: 41px;
-
     text-align: center;
     vertical-align: middle;
-
     color: #fff;
     border-radius: 50%;
     background-color: #0884ce;
     .img {
       display: block;
-
       width: 100%;
       height: 100%;
-
       border-radius: 50%;
       background-repeat: no-repeat;
       background-position: center;
