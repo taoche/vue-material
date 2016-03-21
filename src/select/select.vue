@@ -4,9 +4,9 @@
     <div class="m-select" @click.stop="showDropdownList">
       {{selected}}
       <i class="select-triangle" :class="{'open': showList}">
-        <svg width="8px" height="15px" viewBox="0 0 50 80" xml:space="preserve">
-        <polyline fill="none" stroke="#4e647b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375 "/>
-      </svg>
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+          <path fill="currentColor" d="M3 2l10 6-10 6z"></path>
+        </svg>
       </i>
     </div>
 
@@ -92,30 +92,38 @@ export default {
     display: inline-block;
 
     box-sizing: border-box;
-    min-width: 180px;
     width: 100%;
+    min-width: 180px;
     height: 32px;
     padding-left: 10px;
 
-    border-bottom: 1px solid #aaa;
+    border-bottom: 1px solid #e0e0e0;
     outline: none;
     &:focus,
     &:hover {
       border-bottom: 2px solid #3c80f6;
       .select-triangle {
-        polyline{
-          stroke: #3c80f6;
+        svg {
+          color: #3c80f6;
         }
       }
     }
     .select-triangle {
       position: absolute;
       right: 5px;
-      transform: rotate(-90deg);
-      transition: transform .3s ease-in-out;
 
+      width: 12px;
+
+      transform: rotate(90deg);
+
+      color: rgba(0, 0, 0, .54);
+      svg {
+        transition: transform .3s ease-in-out;
+      }
       &.open {
-        transform: rotate(90deg);
+        svg {
+          transform: rotate(180deg);
+        }
       }
     }
   }
@@ -124,15 +132,20 @@ export default {
     z-index: 1;
     top: 32px;
 
+    overflow: hidden;
+
     width: 180px;
     height: 0;
+
+    transition: height .3s ease-in-out;
+
     border-radius: 2px;
     background-color: #fff;
-    transition: height .3s ease-in-out;
-    overflow: hidden;
     li {
       overflow: hidden;
+
       padding: 5px 0;
+
       cursor: pointer;
       white-space: nowrap;
       text-indent: 20px;
@@ -140,7 +153,8 @@ export default {
 
       color: rgba(0, 0, 0, .87);
       &:focus,
-      &:hover,&.active {
+      &:hover,
+      &.active {
         background: rgba(0, 0, 0, .031);
       }
     }

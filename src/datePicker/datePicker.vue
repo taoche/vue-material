@@ -68,13 +68,12 @@ export default {
 
   data() {
     return {
-      selectedDate : !(this.selectedDateProps instanceof Date) ? new Date(this.selectedDateProps):this.selectedDateProps,
+      selectedDate : '',
       currentDate  : new Date(),
       toSelectYear : false,
       containerTop : 0
     }
   },
-
   watch : {
     show () {
       this.$nextTick(() => {
@@ -82,13 +81,17 @@ export default {
       })
     }
   },
-
+  created () {
+    if (this.selectedDateProps.length) {
+      this.selectedDate = !(this.selectedDateProps instanceof Date) ? new Date(this.selectedDateProps):this.selectedDateProps
+    }else{
+      this.selectedDate = new Date()
+    }
+  },
   computed: {
-
     selectedYear(){
       return new Date(this.selectedDate).getFullYear()
     },
-
     selectedInfo() {
       let dateArr = new Date(this.selectedDate).toDateString().split(' ');
 
