@@ -1,12 +1,10 @@
 <template>
   <div class="select-month">
-    <span class="arrow arrow-left"
-      @click="prevMonth"
-      :class="{disabled: disableControl('prevMonth')}">
+    <span class="arrow arrow-left" :class="{disabled: disableControl('prevMonth')}"
+      @click="prevMonth">
 
       <svg width="8px" height="15px" viewBox="0 0 50 80" xml:space="preserve">
-        <polyline fill="none" stroke="#4e647b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" points="
-        45.63,75.8 0.375,38.087 45.63,0.375 "/>
+        <polyline fill="none" stroke="#4e647b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375 "/>
       </svg>
     </span>
 
@@ -26,39 +24,38 @@
 <script>
 export default {
   name: 'pick-month',
-  props: ['currentInfo', 'minDate', 'maxDate','current'],
+  props: ['currentInfo', 'minDate', 'maxDate', 'current'],
 
   methods: {
+    prevMonth (event) {
+      if (event.target.classList.contains('disabled')) return false
 
-    prevMonth(event) {
-      if(event.target.classList.contains('disabled')) return false;
-
-      this.current = this.addMonth(this.current, -1);
+      this.current = this.addMonth(this.current, -1)
     },
 
-    nextMonth(event) {
-      if(event.target.classList.contains('disabled')) return false;
-      this.current = this.addMonth(this.current, +1);
+    nextMonth (event) {
+      if (event.target.classList.contains('disabled')) return false;
+      this.current = this.addMonth(this.current, +1)
     },
 
-    disableControl(control) {
-      let testDate    = new Date(this.current),
-          addMonthNum = 0;
+    disableControl (control) {
+      let testDate    = new Date(this.current)
+      let addMonthNum = 0
 
-      if (control === 'prevMonth') addMonthNum = -1;
-      if (control === 'nextMonth') addMonthNum = 1;
+      if (control === 'prevMonth') addMonthNum = -1
+      if (control === 'nextMonth') addMonthNum = 1
 
-      return !this.checkIsEnabled(this.addMonth(testDate, addMonthNum));
+      return !this.checkIsEnabled(this.addMonth(testDate, addMonthNum))
     },
 
-    checkIsEnabled(date) {
+    checkIsEnabled (date) {
       return  date.setDate(30) > new Date(this.minDate) && date.setDate(1) < new Date(this.maxDate)
     },
 
-    addMonth(date, number) {
-      number = number || 1;
-      date = new Date(date);
-      return new Date(date.setMonth(date.getMonth() + number));
+    addMonth (date, number) {
+      number = number || 1
+      date = new Date(date)
+      return new Date(date.setMonth(date.getMonth() + number))
     }
   }
 }

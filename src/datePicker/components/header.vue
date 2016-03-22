@@ -22,7 +22,7 @@ export default {
   name: 'date-pick-header',
   props: ['changeSelectType', 'selectedInfo'],
 
-  data() {
+  data () {
     return {
       turnType: null
     }
@@ -30,10 +30,10 @@ export default {
 
   watch: {
     selectedInfo(newVal, oldVal) {
-      let newValDate = [newVal.year, newVal.month, newVal.date].join(''),
-          oldValDate = [oldVal.year, oldVal.month, oldVal.date].join('');
+      let newValDate = [newVal.year, newVal.month, newVal.date].join('')
+      let oldValDate = [oldVal.year, oldVal.month, oldVal.date].join('')
 
-      this.modifyYear = newVal.year !== oldVal.year;
+      this.modifyYear = newVal.year !== oldVal.year
 
       if (newValDate > oldValDate) {
         this.turnType = 'down'
@@ -43,26 +43,26 @@ export default {
     }
   },
 
-  ready() {
+  ready () {
     this.animationEndFn()
   },
 
   methods: {
-    changeYearSelect() {
-      this.changeSelectType = true;
+    changeYearSelect () {
+      this.changeSelectType = true
     },
 
-    changeMonthSelect() {
-      this.changeSelectType = false;
+    changeMonthSelect () {
+      this.changeSelectType = false
     },
 
-    animationEndFn() {
-      let $target = this.$el.querySelector('h2');
+    animationEndFn () {
+      let $target = this.$el.querySelector('h2')
 
       $target.addEventListener('animationend', (event) => {
-        event.target.className = '';
-        this.turnType = null;
-      });
+        event.target.className = ''
+        this.turnType = null
+      })
     }
   }
 }

@@ -30,7 +30,7 @@ export default {
   },
   methods:{
     changeState () {
-      if(this.state === 'disabled') return false
+      if (this.state === 'disabled') return false
 
       this.activeName = this.name
       this.$dispatch(this.eventName, this.name)
