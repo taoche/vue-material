@@ -2,7 +2,7 @@
 <button class="btn btn--{{theme}} {{state}}" :type="type"
   :disabled="isDisabled"
   @click.stop="clickHandle">
-  <slot name="content" is="my-component"><slot>
+  <slot name="content"><slot>
 </button>
 </template>
 
