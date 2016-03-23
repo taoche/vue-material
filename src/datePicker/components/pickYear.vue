@@ -14,12 +14,12 @@ export default {
   props: ['yearArr', 'current', 'selectedDate'],
 
   computed: {
-    selectedYear(){
+    selectedYear () {
       return this.selectedDate.getFullYear()
     }
   },
   watch: {
-    selectedDate(){
+    selectedDate () {
       this.$nextTick(() => {
         this.positionActive()
       })
@@ -36,7 +36,7 @@ export default {
     },
     positionActive () {
       let $target = this.$el.querySelector('.active')
-      this.$el.scrollTop = ($target.offsetTop-this.$el.offsetTop) - $target.offsetHeight * 3
+      this.$el.scrollTop = ($target.offsetTop - this.$el.offsetTop) - $target.offsetHeight * 3
     }
   }
 }

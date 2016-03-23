@@ -89,7 +89,7 @@ export default {
     }
   },
   computed: {
-    selectedYear (){
+    selectedYear () {
       return new Date(this.selectedDate).getFullYear()
     },
     selectedInfo () {

@@ -29,7 +29,7 @@ export default {
   },
 
   watch: {
-    selectedInfo(newVal, oldVal) {
+    selectedInfo (newVal, oldVal) {
       let newValDate = [newVal.year, newVal.month, newVal.date].join('')
       let oldValDate = [oldVal.year, oldVal.month, oldVal.date].join('')
 

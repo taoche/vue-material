@@ -34,7 +34,7 @@ export default {
     },
 
     nextMonth (event) {
-      if (event.target.classList.contains('disabled')) return false;
+      if (event.target.classList.contains('disabled')) return false
       this.current = this.addMonth(this.current, +1)
     },
 

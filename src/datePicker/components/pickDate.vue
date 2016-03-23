@@ -25,8 +25,7 @@
 export default {
   name: 'pick-date',
   props: ['selectedDate', 'minDate', 'maxDate', 'current'],
-
-  data() {
+  data () {
     return {
       dateTransitionType : false,
       weekMask           : [0, 1, 2, 3, 4, 5, 6],
@@ -35,14 +34,14 @@ export default {
   },
 
   watch:{
-    current (newVal, oldVal){
-      this.dateTransitionType = newVal > oldVal ? 'right' : 'left';
+    current (newVal, oldVal) {
+      this.dateTransitionType = newVal > oldVal ? 'right' : 'left'
     }
   },
 
   computed: {
     calendar () {
-      return this.updateCalendar();
+      return this.updateCalendar()
     }
   },
 
@@ -72,7 +71,7 @@ export default {
             is_today    : beginDay.toDateString() === now.toDateString(),
             is_disabled : !this.checkIsEnabled(beginDay),
             date        : new Date(beginDay)
-          });
+          })
 
           // 天数步进
           beginDay.setDate(beginDay.getDate() + 1)
@@ -86,7 +85,7 @@ export default {
 
     selectDate (date) {
       if (this.checkIsEnabled(date)) {
-        this.dateTransitionType =false
+        this.dateTransitionType = false
         this.selectedDate = date
       }
     },
