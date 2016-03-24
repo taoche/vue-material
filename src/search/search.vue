@@ -16,12 +16,12 @@ export default {
   name: 'component-search',
   props: {
     queryText: {
-      type    : String,
-      default : ''
+      type: String,
+      default: ''
     },
     placeholder: {
-      type    : String,
-      default : '请输入关键字'
+      type: String,
+      default: '请输入关键字'
     }
   },
   computed: {

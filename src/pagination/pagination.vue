@@ -31,20 +31,20 @@ export default {
   name: 'component-pagination',
   props: {
     pageLength: {
-      type     : Number,
-      required : true
+      type: Number,
+      required: true
     },
     screenPagination: {
-      type    : Number,
-      default : 10
+      type: Number,
+      default: 10
     },
     currentPage: {
-      type    : Number,
-      default : 1
+      type: Number,
+      default: 1
     },
     valve: {
-      type    : Number,
-      default : 5
+      type: Number,
+      default: 5
     }
   },
   computed: {
@@ -55,8 +55,8 @@ export default {
 
         for (let i = 1, len = this.pageLength; i <= len; i++) {
           pageArr.push({
-            page      : i,
-            isCurrent : i === this.currentPage
+            page: i,
+            isCurrent: i === this.currentPage
           })
         }
 
@@ -65,27 +65,27 @@ export default {
 
           for (let i = 1, len = this.currentPage; i <= len; i++) {
             pageArr.push({
-              page      : i,
-              isCurrent : i === len
+              page: i,
+              isCurrent: i === len
             })
           }
 
         } else {
 
           pageArr.push({
-            page : 1
+            page: 1
           }, {
-            page : 2
+            page: 2
           }, {
-            page : '...',
+            page: '...',
             notPage:true
           })
 
           // 倒数3个数
           for (let i = 2, len = this.currentPage; i >= 0; i--) {
             pageArr.push({
-              page      : len - i,
-              isCurrent : !i
+              page: len - i,
+              isCurrent: !i
             })
           }
         }
@@ -95,7 +95,7 @@ export default {
           for (let i = 1, len = this.pageLength; i <= len; i++) {
             if (i > this.currentPage) {
               pageArr.push({
-                page : i
+                page: i
               })
             }
           }
@@ -103,16 +103,16 @@ export default {
         } else {
 
           pageArr.push({
-            page : this.currentPage + 1
+            page: this.currentPage + 1
           }, {
-            page : this.currentPage + 2
+            page: this.currentPage + 2
           }, {
-            page : '...',
+            page: '...',
             notPage:true
           }, {
-            page : this.pageLength - 1
+            page: this.pageLength - 1
           }, {
-            page : this.pageLength
+            page: this.pageLength
           })
         }
 

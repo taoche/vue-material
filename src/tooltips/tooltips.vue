@@ -11,26 +11,26 @@
 export default {
   props: {
     show: {
-      type     : Boolean,
-      required : true
+      type: Boolean,
+      required: true
     },
     direction: {
-      type    : String,
-      default : 'bottom'
+      type: String,
+      default: 'bottom'
     },
     target: {
-      required : true
+      required: true
     },
     text: {
-      type : String
+      type: String
     }
   },
   data () {
     return {
-      positionData : {}
+      positionData: {}
     }
   },
-  computed : {
+  computed: {
     tPosition () {
       return this.target.getBoundingClientRect()
     }
@@ -43,45 +43,45 @@ export default {
       })
     }
   },
-  methods : {
+  methods: {
     computedPositon () {
       let _tPosition = this.tPosition
-      let _tWidth    = _tPosition.width
-      let _tHeight   = _tPosition.height
-      let _tLeft     = _tPosition.left
-      let _tTop      = _tPosition.top
+      let _tWidth = _tPosition.width
+      let _tHeight = _tPosition.height
+      let _tLeft = _tPosition.left
+      let _tTop = _tPosition.top
 
-      let _margin    = 14
+      let _margin = 14
       let domTooltip = this.$els.tooltip
-      let _sWidth    = domTooltip.offsetWidth
-      let _sHeight   = domTooltip.offsetHeight
+      let _sWidth = domTooltip.offsetWidth
+      let _sHeight = domTooltip.offsetHeight
 
       let setDirection = {
         top:() => {
           return {
-            left : _tLeft + (_tWidth - _sWidth) / 2,
-            top  : _tTop - _margin - _sHeight
+            left: _tLeft + (_tWidth - _sWidth) / 2,
+            top: _tTop - _margin - _sHeight
           }
         },
 
         right:() => {
           return {
-            left : _tLeft + _margin + _tWidth,
-            top  : _tTop
+            left: _tLeft + _margin + _tWidth,
+            top: _tTop
           }
         },
 
         bottom:() => {
           return {
-            left : _tLeft + (_tWidth - _sWidth) / 2,
-            top  : _tTop + _tHeight + _margin
+            left: _tLeft + (_tWidth - _sWidth) / 2,
+            top: _tTop + _tHeight + _margin
           }
         },
 
         left:() => {
           return {
-            left : _tLeft - _margin - _sWidth,
-            top  : _tTop
+            left: _tLeft - _margin - _sWidth,
+            top: _tTop
           }
         }
       }

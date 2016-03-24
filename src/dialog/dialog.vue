@@ -18,6 +18,7 @@
 
 <script>
 export default {
+  name: 'component-dialog',
   props: {
     show: {
       type: Boolean,
@@ -27,7 +28,7 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style lang="scss">
 .dialog-mask {
   position: fixed;
   z-index: 9998;

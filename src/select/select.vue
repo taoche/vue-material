@@ -26,21 +26,21 @@ export default {
   name: 'component-select',
   props: {
     values: {
-      required : true
+      required: true
     },
-    index    : null,
-    selected : null
+    index: null,
+    selected: null
   },
   data () {
     return {
-      showList : false
+      showList: false
     }
   },
   methods: {
     select (item, index) {
       this.showList = false
       this.selected = item
-      this.index    = index
+      this.index = index
     },
 
     showDropdownList () {
@@ -78,7 +78,7 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style lang="scss">
 .component-select {
   position: relative;
   display: inline-block;

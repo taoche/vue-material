@@ -11,10 +11,10 @@
 
       <tr v-for="week in calendar" transition="date">
         <td v-for="day in week" @click="selectDate(day.date)"
-          :class="{'today'      : day.is_today,
-            'disabled'          : day.is_disabled,
-            'selected'          : isSelected(day.date),
-            'not-current-month' : !day.this_month}">{{ day.day }}</td>
+          :class="{'today': day.is_today,
+            'disabled': day.is_disabled,
+            'selected': isSelected(day.date),
+            'not-current-month': !day.this_month}">{{ day.day }}</td>
       </tr>
     </tbody>
 
@@ -27,9 +27,9 @@ export default {
   props: ['selectedDate', 'minDate', 'maxDate', 'current'],
   data () {
     return {
-      dateTransitionType : false,
-      weekMask           : [0, 1, 2, 3, 4, 5, 6],
-      weekHeader         : ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+      dateTransitionType: false,
+      weekMask: [0, 1, 2, 3, 4, 5, 6],
+      weekHeader: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
     }
   },
 
@@ -48,10 +48,10 @@ export default {
   methods: {
     // [生成 7*6 日期信息]
     updateCalendar () {
-      let current  = new Date(this.current)
-      let now      = new Date()
+      let current = new Date(this.current)
+      let now = new Date()
       let beginDay = this.firstDayOfMonth(current)
-      let week     = []
+      let week = []
       let calendar = []
 
       // 获取当月第一天 是 星期几
@@ -66,11 +66,11 @@ export default {
 
         for (let nbDays = 0; nbDays < 7; nbDays++) {
           week.push({
-            day         : beginDay.getDate(),
-            this_month  : current.getMonth() === beginDay.getMonth(),
-            is_today    : beginDay.toDateString() === now.toDateString(),
-            is_disabled : !this.checkIsEnabled(beginDay),
-            date        : new Date(beginDay)
+            day: beginDay.getDate(),
+            this_month: current.getMonth() === beginDay.getMonth(),
+            is_today: beginDay.toDateString() === now.toDateString(),
+            is_disabled: !this.checkIsEnabled(beginDay),
+            date: new Date(beginDay)
           })
 
           // 天数步进
@@ -91,7 +91,7 @@ export default {
     },
 
     checkIsEnabled (date) {
-      let minDate =  new Date(this.minDate)
+      let minDate = new Date(this.minDate)
       let maxDate = new Date(this.maxDate)
 
       return (() => {

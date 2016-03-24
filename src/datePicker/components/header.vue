@@ -3,15 +3,15 @@
   <div class="date-year">
     <h4 @click="changeYearSelect" :class="{
       'active':changeSelectType,
-      'ani-up'   : turnType==='up' && modifyYear,
-      'ani-down' : turnType==='down' && modifyYear}">{{selectedInfo.year}}</h4>
+      'ani-up': turnType==='up' && modifyYear,
+      'ani-down': turnType==='down' && modifyYear}">{{selectedInfo.year}}</h4>
   </div>
 
   <div class="date">
     <h2 @click="changeMonthSelect" :class="{
-        'active'   : !changeSelectType,
-        'ani-up'   : turnType==='up',
-        'ani-down' : turnType==='down'}">{{selectedInfo.day}}, {{selectedInfo.month}} {{selectedInfo.date}}</h2>
+        'active': !changeSelectType,
+        'ani-up': turnType==='up',
+        'ani-down': turnType==='down'}">{{selectedInfo.day}}, {{selectedInfo.month}} {{selectedInfo.date}}</h2>
   </div>
 
 </header>

@@ -20,7 +20,7 @@ export default {
   },
   computed: {
     imageSrc () {
-      return 'url("' + this.src + '")'
+      return `url("${this.src}")`
     }
   }
 }

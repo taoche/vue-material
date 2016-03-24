@@ -14,18 +14,18 @@
 <script>
 export default {
   props: {
-    name : {
-      type : String
+    name: {
+      type: String
     },
     activeName: {
-      type : String
+      type: String
     },
     state: {
       type: String
     },
     eventName: {
-      type    : String,
-      default : 'radio-click'
+      type: String,
+      default: 'radio-click'
     }
   },
   methods:{

@@ -1,18 +1,13 @@
 <template>
-  <div class="menu-wrapper"
-    v-el:menu
-    v-if="show"
-    :style="{
-      width: width,
-      left: positionData.left +'px',
-      top: positionData.top +'px',
-      transformOrigin: origin }"
-    transition="menu">
+  <div class="menu-wrapper" v-el:menu v-if="show" transition="menu"
+    :style="{width: width,
+    left: positionData.left +'px',
+    top: positionData.top +'px',
+    transformOrigin: origin}">
 
     <div class="menu-container" :style="{font: size}">
       <ul v-for='menuData in menuList'>
-        <a
-          v-for='item in menuData'
+        <a v-for='item in menuData'
           class={{item.class}}
           href="{{{item.href}}}">
           <li>
@@ -33,25 +28,25 @@
 export default {
   data(){
     return {
-      positionData : {},
-      origin : 'left top'
+      positionData: {},
+      origin: 'left top'
     }
   },
-  props : {
-    show : {
-      type : Boolean,
-      required : true
+  props: {
+    show: {
+      type: Boolean,
+      required: true
     },
-    direction : {
-      type : String,
-      default : 'leftBottom'
+    direction: {
+      type: String,
+      default: 'leftBottom'
     },
     target: {
-      required : true
+      required: true
     },
     menuList: {
-      type    : Array,
-      require : true
+      type: Array,
+      require: true
     },
     width: {
       type: String
@@ -72,22 +67,21 @@ export default {
   methods: {
     computedPositon(target){
 
-      let _tPosition  = target.getBoundingClientRect(),
-          _tWidth    = _tPosition.width,
-          _tHeight   = _tPosition.height,
-          _tLeft     = _tPosition.left,
-          _tTop      = _tPosition.top,
-          domMenu    = this.$els.menu,
-          _sWidth    = domMenu.offsetWidth,
-          _sHeight   = domMenu.offsetHeight;
+      let _tPosition = target.getBoundingClientRect(),
+          _tWidth = _tPosition.width,
+          _tHeight = _tPosition.height,
+          _tLeft = _tPosition.left,
+          _tTop = _tPosition.top,
+          domMenu = this.$els.menu,
+          _sWidth = domMenu.offsetWidth,
+          _sHeight = domMenu.offsetHeight;
 
-      console.log("top: "+_tPosition.top+" left: "+_tPosition.left+" bottom: "+_tPosition.bottom+" right: "+_tPosition.right+" menuWidth: "+_sWidth+" menuHeight: "+_sHeight);
       let setDirection = {
         leftBottom:() => {
           this.origin = 'left top';
           return {
-            left : _tLeft,
-            top  : _tTop + _tHeight
+            left: _tLeft,
+            top: _tTop + _tHeight
 
           }
         },
@@ -95,24 +89,24 @@ export default {
         rightBottom:() => {
           this.origin = 'right top';
           return {
-            left : _tLeft + _tWidth - _sWidth,
-            top  : _tTop + _tHeight
+            left: _tLeft + _tWidth - _sWidth,
+            top: _tTop + _tHeight
           }
         },
 
         leftTop:() => {
           this.origin = 'left bottom';
           return {
-            left : _tLeft,
-            top  : _tTop - _sHeight
+            left: _tLeft,
+            top: _tTop - _sHeight
           }
         },
 
         rightTop:() => {
-          this.origin =  'right bottom';
+          this.origin = 'right bottom';
           return {
-            left : _tLeft + _tWidth - _sWidth,
-            top  : _tTop - _sHeight
+            left: _tLeft + _tWidth - _sWidth,
+            top: _tTop - _sHeight
           }
         }
       }
@@ -122,7 +116,7 @@ export default {
   }
 }
 </script>
-<style lang='scss'>
+<style lang="scss">
 .menu-wrapper {
   position: absolute;
   z-index: 999;

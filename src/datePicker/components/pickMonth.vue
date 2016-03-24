@@ -39,7 +39,7 @@ export default {
     },
 
     disableControl (control) {
-      let testDate    = new Date(this.current)
+      let testDate = new Date(this.current)
       let addMonthNum = 0
 
       if (control === 'prevMonth') addMonthNum = -1

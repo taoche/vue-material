@@ -9,11 +9,11 @@
 <script>
 
 export default {
-  name : 'component-layout'
+  name: 'component-layout'
 }
 </script>
 
-<style lang='scss'>
+<style lang="scss">
 .component-layout {
   position: fixed;
   z-index: 0;

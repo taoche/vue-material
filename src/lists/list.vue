@@ -7,7 +7,7 @@
 </div>
 </template>
 
-<style lang='scss'>
+<style lang="scss">
 .list {
   padding: 8px 0;
 }

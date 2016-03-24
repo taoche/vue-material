@@ -27,7 +27,7 @@
         <tr v-for="(index,item) in tableData"
           @click="rowSelect(index)"
           track-by="$index"
-          :class="{active : item.checked}">
+          :class="{active: item.checked}">
           <td v-if="hasCheckbox"><checkbox :is-checked="item.checked"></checkbox></td>
           <td v-for="ele in item.value">{{ele}}</td>
         </tr>
@@ -39,22 +39,22 @@
 
 <script>
 export default {
-  name  : 'component-table',
-  props : {
-    tableData   : null,
-    hasCheckbox : {
-      type    : Boolean,
-      default : false
+  name: 'component-table',
+  props: {
+    tableData: null,
+    hasCheckbox: {
+      type: Boolean,
+      default: false
     }
   },
 
   data () {
     return {
-      checkedAllState : false
+      checkedAllState: false
     }
   },
 
-  watch : {
+  watch: {
     checkedAllState (value) {
       this.tableData.forEach((item)=>{
         item.checked = value
@@ -62,14 +62,14 @@ export default {
     }
   },
 
-  methods : {
+  methods: {
     rowSelect (index) {
       this.tableData[index].checked = !this.tableData[index].checked
     }
   },
 
-  components : {
-    checkbox : require('../checkbox/checkbox')
+  components: {
+    checkbox: require('../checkbox/checkbox')
   }
 }
 </script>

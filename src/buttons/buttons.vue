@@ -1,7 +1,6 @@
 <template>
 <button class="btn btn--{{theme}} {{state}}" :type="type"
-  :disabled="isDisabled"
-  @click.stop="clickHandle">
+  :disabled="isDisabled" @click.stop="clickHandle">
   <slot name="content"><slot>
 </button>
 </template>
@@ -11,23 +10,23 @@ export default {
   name: 'component-button',
   props: {
     theme: {
-      type    : String,
-      default : 'basis'
+      type: String,
+      default: 'basis'
     },
     state: {
-      type    : String,
-      default : ''
+      type: String,
+      default: ''
     },
     type: {
-      type    : String,
-      default : 'button'
+      type: String,
+      default: 'button'
     },
     eventName: {
-      type    : String,
-      default : 'btn-click'
+      type: String,
+      default: 'btn-click'
     }
   },
-  computed : {
+  computed: {
     isDisabled () {
       return this.state === 'disabled'
     }

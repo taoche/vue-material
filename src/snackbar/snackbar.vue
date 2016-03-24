@@ -1,54 +1,50 @@
 <template>
-  <div v-if="show" class="component-snackbar" style="{{{style}}}">
-    <p>{{msg}}</p>
-    <slot name="action"></slot>
-  </div>
+<div v-if="show" class="component-snackbar" style="{{{style}}}">
+  <p>{{msg}}</p>
+  <slot name="action"></slot>
+</div>
 </template>
+
 <script>
-  export default {
-    data(){
-      return {
-      }
+export default {
+  props: {
+    show: {
+      type: Boolean,
+      required: true
     },
-    props : {
-      show: {
-        type: Boolean,
-        required: true
-      },
-      msg: {
-        type: String,
-        required: true
-      },
-      style: {
-        type: String
-      },
-      duration : {
-        type: Number,
-        default: 0
-      }
+    msg: {
+      type: String,
+      required: true
     },
-    watch: {
-      'show' : function(){
-        var self = this;
-        var second = self.duration*1000;
-        if(second > 0){
-          var t;
-          if(self.show){
-            t = setTimeout(function(){
-              self.show = false;
-            }, second);
-          }else{
-            clearTimeout(t);
-          }
+    style: {
+      type: String
+    },
+    duration: {
+      type: Number,
+      default: 0
+    }
+  },
+  watch: {
+    show () {
+      let self = this
+      let second = self.duration*1000
+
+      if(second > 0){
+        var t
+        if(self.show){
+          t = setTimeout(function(){
+            self.show = false
+          }, second)
+        }else{
+          clearTimeout(t)
         }
       }
-    },
-    methods : {
-
     }
   }
+}
 </script>
-<style lang='scss'>
+
+<style lang="scss">
 .component-snackbar {
   position: fixed;
   bottom: 10px;

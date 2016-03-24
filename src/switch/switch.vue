@@ -10,15 +10,15 @@
 
 <script>
 export default {
-  name : 'component-switch',
-  props : {
-    isCheck : {
-      type    : Boolean,
-      default : false
+  name: 'component-switch',
+  props: {
+    isCheck: {
+      type: Boolean,
+      default: false
     },
-    isDisabled : {
-      type    : Boolean,
-      default : false
+    isDisabled: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {

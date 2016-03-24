@@ -29,12 +29,12 @@
 export default {
   props: {
     show: {
-      type : Boolean,
-      required : true
+      type: Boolean,
+      required: true
     }
   },
   components: {
-    'component-buttons' : require('../buttons/buttons')
+    'component-buttons': require('../buttons/buttons')
   }
 }
 </script>

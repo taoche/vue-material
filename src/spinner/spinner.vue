@@ -7,7 +7,7 @@
 <script>
 </script>
 
-<style lang='scss'>
+<style lang="scss">
 .component-circular {
   position: absolute;
   top: 20%;

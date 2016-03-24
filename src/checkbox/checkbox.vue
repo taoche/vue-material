@@ -12,18 +12,18 @@
 
 <script>
 export default {
-  name : 'component-checkbox',
-  props : {
-    isChecked : {
-      type    : Boolean,
-      default : false
+  name: 'component-checkbox',
+  props: {
+    isChecked: {
+      type: Boolean,
+      default: false
     },
-    isDisabled : {
-      type    : Boolean,
-      default : false
+    isDisabled: {
+      type: Boolean,
+      default: false
     }
   },
-  methods : {
+  methods: {
     changeState (event) {
       if (this.isDisabled) {
         return false

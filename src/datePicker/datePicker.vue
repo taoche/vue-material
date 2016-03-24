@@ -1,7 +1,7 @@
 <template>
 <div class="date-picker" v-if="show" transition="date">
 
-  <div class="date-picker-wrapper" :style="{top : containerTop}">
+  <div class="date-picker-wrapper" :style="{top: containerTop}">
     <div class="date-picker-container"  v-el:date-container>
 
       <!-- DatePick header -->
@@ -10,7 +10,7 @@
         :selected-info="selectedInfo"></date-header>
 
       <!-- DatePick main select month and date -->
-      <div class="main" v-if="!toSelectYear">
+      <div class="date-main" v-if="!toSelectYear">
         <pick-month
         :min-date="minDate"
         :max-date="maxDate"
@@ -60,7 +60,7 @@ export default {
         return '2115-01-01'
       }
     },
-    show : {
+    show: {
       type: Boolean,
       required: true
     }
@@ -68,13 +68,13 @@ export default {
 
   data () {
     return {
-      selectedDate : '',
-      currentDate  : new Date(),
-      toSelectYear : false,
-      containerTop : 0
+      selectedDate: '',
+      currentDate: new Date(),
+      toSelectYear: false,
+      containerTop: 0
     }
   },
-  watch : {
+  watch: {
     show () {
       this.$nextTick(() => {
         this.containerTop = (window.innerHeight - this.$els.dateContainer.offsetHeight) / 2 + 'px'
@@ -96,16 +96,16 @@ export default {
       let dateArr = new Date(this.selectedDate).toDateString().split(' ')
 
       return {
-        day   : dateArr[0],
-        month : dateArr[1],
-        date  : dateArr[2],
-        year  : dateArr[3]
+        day: dateArr[0],
+        month: dateArr[1],
+        date: dateArr[2],
+        year: dateArr[3]
       }
     },
     currentInfo () {
       return {
-        monthName : this.getMonthName(this.currentDate.getMonth()),
-        year      : this.currentDate.getFullYear()
+        monthName: this.getMonthName(this.currentDate.getMonth()),
+        year: this.currentDate.getFullYear()
       }
     },
     yearArr () {
@@ -132,7 +132,7 @@ export default {
 
     getYearArr () {
       let miniYear = new Date(this.minDate).getFullYear()
-      let maxYear  = new Date(this.maxDate).getFullYear()
+      let maxYear = new Date(this.maxDate).getFullYear()
 
       let yearArr = []
 
@@ -146,7 +146,7 @@ export default {
     dateFormat (date) {
       return new Date(date).toLocaleDateString().split('/').map(item => {
         if (item < 10) {
-          item  = '0' + item
+          item = '0' + item
         }
         return item
       }).join('-')
@@ -162,11 +162,11 @@ export default {
   },
 
   components: {
-    'date-header' : require('./components/header.vue'),
-    'date-footer' : require('./components/footer.vue'),
-    'pick-month'  : require('./components/pickMonth.vue'),
-    'pick-date'   : require('./components/pickDate.vue'),
-    'pick-year'   : require('./components/pickYear.vue')
+    'date-header': require('./components/header.vue'),
+    'date-footer': require('./components/footer.vue'),
+    'pick-month': require('./components/pickMonth.vue'),
+    'pick-date': require('./components/pickDate.vue'),
+    'pick-year': require('./components/pickYear.vue')
   }
 }
 </script>

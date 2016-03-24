@@ -1,10 +1,10 @@
 <template>
 <div class="component-input">
-  <input class="m-input" v-model="value" :type="type"
+  <input class="m-input" v-model="value"
+    :type="type"
     :placeHolder="hint"
     :readonly="isReadOnly"
-    :class="{error: error,
-      disabled: isDisabled}"/>
+    :class="{error: error, disabled: isDisabled}"/>
 </div>
 </template>
 
@@ -15,29 +15,29 @@ export default {
       type: String
     },
     isDisabled: {
-      type    : Boolean,
-      default : false
+      type: Boolean,
+      default: false
     },
     isReadOnly: {
-      type    : Boolean,
-      default : false
+      type: Boolean,
+      default: false
     },
     type: {
-      type    : String,
-      default : 'text'
+      type: String,
+      default: 'text'
     },
     error: {
-      type    : Boolean,
-      default : false
+      type: Boolean,
+      default: false
     },
     hint: {
-      type : String
+      type: String
     }
   }
 }
 </script>
 
-<style lang='scss'>
+<style lang="scss">
 .component-input {
   position: relative;
   display: inline-block;

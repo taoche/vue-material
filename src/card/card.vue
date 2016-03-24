@@ -4,6 +4,7 @@
     <h3>{{cardData.cardHead.title}}</h3>
     <p>{{cardData.cardHead.subTitle}}</p>
   </div>
+
   <div v-if="cardData.cardMedia" class="card-media">
     <img src="{{cardData.cardMedia.imgSrc}}" />
     <div v-if="cardData.cardMedia.head" class="card-head">
@@ -11,31 +12,26 @@
       <p>{{cardData.cardMedia.subTitle}}</p>
     </div>
   </div>
+
   <div v-if="cardData.cardText"  class="card-text">
     <p>{{cardData.cardText.content}}</p>
   </div>
   <slot name="card-action"></slot>
 </div>
-
-
 </template>
 
 <script>
 export default {
-  props : {
+  props: {
     cardData: {
-      type    : Object,
-      require : true
+      type: Object,
+      require: true
     }
-  },
-
-  methods:{
-
   }
 }
 </script>
 
-<style lang='scss'>
+<style lang="scss">
 .card-wrapper {
   width: 100%;
   height: auto;
