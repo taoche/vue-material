@@ -32,7 +32,7 @@ export default {
       if(second > 0){
         var t
         if(self.show){
-          t = setTimeout(function(){
+          t = setTimeout(() => {
             self.show = false
           }, second)
         }else{
