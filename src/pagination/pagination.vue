@@ -16,7 +16,7 @@
       <a href="javascript:void(0)">{{item.page}}</a>
     </li>
 
-    <li class="next" class="{disabled:currentPage  === pageLength}"
+    <li class="next" :class="{disabled:currentPage  === pageLength}"
       @click.stop="nextPage">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="8px" height="15px" viewBox="0 0 50 80" xml:space="preserve">
         <polyline fill="none" stroke="#4e647b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8"/>
@@ -156,6 +156,14 @@ export default {
     &:hover {
       polyline {
         stroke: rgba(0,0,0,.87);
+      }
+    }
+  }
+  .disabled {
+    svg {
+      cursor:not-allowed;
+      polyline {
+        stroke: rgba(0,0,0,.3);
       }
     }
   }
