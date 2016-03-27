@@ -8,8 +8,7 @@
     <div class="menu-container" :style="{font: size}">
       <ul v-for='menuData in menuList'>
         <a v-for='item in menuData'
-          class={{item.class}}
-          href="{{{item.href}}}">
+          class={{item.class}} href="{{{item.href}}}">
           <li>
             <p>
               <i v-if="item.leftIcon" class="{{item.leftIcon}}"></i>

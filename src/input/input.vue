@@ -1,7 +1,6 @@
 <template>
 <div class="component-input">
-  <input class="m-input" v-model="value"
-    :type="type"
+  <input class="m-input" :type="type" v-model="value"
     :placeHolder="hint"
     :readonly="isReadOnly"
     :class="{error: error, disabled: isDisabled}"/>

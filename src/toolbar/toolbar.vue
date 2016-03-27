@@ -14,9 +14,7 @@
 
 <script>
 export default {
-  name: 'component-toolbar',
-  props: {
-  }
+  name: 'component-toolbar'
 }
 </script>
 

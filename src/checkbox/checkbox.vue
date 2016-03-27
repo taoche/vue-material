@@ -25,9 +25,8 @@ export default {
   },
   methods: {
     changeState (event) {
-      if (this.isDisabled) {
-        return false
-      }
+      if (this.isDisabled) return false
+
       this.isChecked = !this.isChecked
       this.$dispatch('checkbox-state-change', event, this.isChecked)
     }

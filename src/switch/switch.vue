@@ -1,8 +1,7 @@
 <template>
   <div class="component-switch"
     @click.stop="toggleSwitchHandle"
-    :class="{'active': isCheck,
-    'disabled': isDisabled}">
+    :class="{'active': isCheck, 'disabled': isDisabled}">
     <a class="switch-pole"></a>
     <span class="switch-thumb"></span>
   </div>
@@ -23,6 +22,8 @@ export default {
   },
   methods: {
     toggleSwitchHandle () {
+      if (this.isDisabled) return false
+
       this.isCheck = !this.isCheck
       this.$dispatch('component-switch-toggle', this.isCheck)
     }
