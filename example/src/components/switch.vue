@@ -8,6 +8,8 @@
     <example-code>
       <textarea>
       <component-switch></component-switch>
+      <component-switch :is-check="true"></component-switch>
+      <component-switch :is-disabled="true"></component-switch>
       </textarea>
     </example-code>
 
