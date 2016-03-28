@@ -1,6 +1,6 @@
 <template>
 <div class="component-avatar">
-  <div class="avatar">
+  <div class="avatar" :class="{'is-letter': !src }">
     <span v-if="src" class="img"
       :style="{'background-image': imageSrc,
       'background-size': 'cover'}"></span>
@@ -60,7 +60,9 @@ export default {
     vertical-align: middle;
     color: #fff;
     border-radius: 50%;
-    background-color: #0884ce;
+    &.is-letter {
+      background-color: #0884ce;
+    }
     .img {
       display: block;
       width: 100%;

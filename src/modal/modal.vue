@@ -60,7 +60,7 @@ export default {
     vertical-align: middle;
   }
   .modal-container {
-    width: 400px;
+    min-width: 400px;
     margin: 0 auto;
     padding-bottom: 22px;
     transition: all .3s ease;
