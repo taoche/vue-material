@@ -1,23 +1,18 @@
 <template>
-<div class="modal-mask" v-if="show">
+<div class="modal-mask" transition="modal" @click="modalMaskHandle">
   <div class="modal-wrapper">
-    <div class="modal-container shadow--4dp" v-el:container>
-
+    <div class="modal-container shadow--4dp">
       <div class="modal-header">
-        <slot name="header">
-          default header
-        </slot>
+        <slot name="header"><slot>
       </div>
-
       <div class="modal-body">
-        <slot name="body">
-          default body
-        </slot>
+        <slot name="body"></slot>
       </div>
-
       <div class="modal-footer">
         <slot name="footer">
-          <component-buttons><span slot="content">确认</span></component-buttons>
+          <component-buttons @click="modalSureHandle">
+            <span slot="content">确认</span>
+          </component-buttons>
         </slot>
       </div>
     </div>
@@ -31,6 +26,16 @@ export default {
     show: {
       type: Boolean,
       required: true
+    }
+  },
+  methods: {
+    modalMaskHandle (event) {
+      if (event.target.classList.contains('modal-wrapper')) {
+        this.show = false
+      }
+    },
+    modalSureHandle () {
+      this.show = false
     }
   },
   components: {
@@ -72,6 +77,13 @@ export default {
     .modal-footer {
       overflow: hidden;
       padding: 3px 22px !important;
+    }
+  }
+  &.modal-enter,
+  &.modal-leave {
+    opacity: 0;
+    .modal-container {
+      transform: scale(1.1);
     }
   }
 }

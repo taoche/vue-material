@@ -29,7 +29,7 @@ export default {
       padding: 8px 20px;
       cursor: pointer;
       color: red;
-      color: #009688;
+      color: #0884ce;
       border: none;
       background: transparent;
       &:hover {
@@ -44,10 +44,10 @@ export default {
 }
 @-webkit-keyframes btn-fade-in {
   0% {
-    background: rgba(lighten(#009688, 5%), .1);
+    background: rgba(lighten(#0884ce, 5%), .1);
   }
   100% {
-    background: rgba(lighten(#009688, 5%), .5);
+    background: rgba(lighten(#0884ce, 5%), .5);
   }
 }
 </style>

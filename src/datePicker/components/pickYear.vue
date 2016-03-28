@@ -64,7 +64,7 @@ export default {
           font-size: 22px;
           font-weight: 800;
           margin: 5px 0;
-          color: #009485;
+          color: #0884ce;
         }
       }
     }

@@ -159,11 +159,11 @@ export default {
           }
           &.today {
             font-weight: bold;
-            color: #009688;
+            color: #0884ce;
           }
           &.selected {
             color: #fff;
-            background: #009688;
+            background: #0884ce;
           }
           &:not(.selected):not(.disabled):hover {
             position: relative;
@@ -181,7 +181,7 @@ export default {
             transform: translate3d(0, 0, 0);
             animation: dateBackground .3s;
             border-radius: 50%;
-            background: rgba(#009688, .7);
+            background: rgba(#0884ce, .7);
           }
         }
       }

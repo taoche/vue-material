@@ -1,8 +1,8 @@
 <template>
-<div class="dialog-mask" v-if="show" transition="dialog">
+<div class="dialog-mask" transition="dialog" @click="dialogMaskHandle">
   <div class="dialog-wrapper">
     <div class="dialog-container shadow--4dp">
-      <span class="dialog-close" @click.stop="show = false">
+      <span class="dialog-close" @click.stop="dialogCloseHandle">
         <svg width="20px" height="20px" viewPort="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
           <line x1="1" y1="12" x2="12" y2="1" stroke="#666666" stroke-width="2"/>
           <line x1="1" y1="1" x2="12" y2="12" stroke="#666666" stroke-width="2"/>
@@ -23,6 +23,16 @@ export default {
     show: {
       type: Boolean,
       required: true
+    }
+  },
+  methods: {
+    dialogMaskHandle (event) {
+      if (event.target.classList.contains('dialog-wrapper')) {
+        this.show = false
+      }
+    },
+    dialogCloseHandle () {
+      this.show = false
     }
   }
 }

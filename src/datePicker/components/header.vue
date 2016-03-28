@@ -75,7 +75,7 @@ export default {
     padding: 20px;
 
     text-align: left;
-    background: #009688;
+    background: #0884ce;
     h4,
     h2 {
       color: rgba(#fff, .7);
