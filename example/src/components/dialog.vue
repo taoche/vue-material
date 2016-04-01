@@ -2,7 +2,7 @@
   <div class="example-dialog">
     <h3>基础使用</h3>
     <button @click="show =true">显示dialog</button>
-    <component-dialog :show.sync="show">
+    <component-dialog v-if="show" :show.sync="show" class="component-dialog">
       <div slot="content">
         <h5>基本的 Dialog 组件的使用</h5>
       </div>
@@ -12,7 +12,7 @@
       <textarea>
       <button @click="show = true">显示dialog</button>
 
-      <component-dialog :show.sync="show">
+      <component-dialog v-if="show" :show.sync="show" class="component-dialog">
         <div slot="content">
           <h5>基本的Dialog组件的使用</h5>
         </div>
@@ -41,4 +41,9 @@ export default {
 </script>
 
 <style lang="scss">
+.component-dialog {
+  .dialog-container {
+    width: 300px;
+  }
+}
 </style>
