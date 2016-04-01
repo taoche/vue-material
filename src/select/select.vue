@@ -1,6 +1,6 @@
 <template>
 <div class="component-select">
-  <div class='select-block'>
+  <div class="select-block">
     <div class="m-select" @click.stop="showDropdownList">
       {{selected}}
       <i class="select-triangle" :class="{'open': showList}">
@@ -11,7 +11,7 @@
     </div>
 
     <slot name="selectList">
-      <ul class="list-box shadow--2dp" v-if="showList" v-el:select-list>
+      <ul class="list-box shadow--2dp" v-show="showList" transition="select-list">
         <li v-for="item in values" track-by="$index"
           :class="{'active': item === selected}"
           @click="select(item, $index)">{{item}}</li>
@@ -36,40 +36,39 @@ export default {
       showList: false
     }
   },
+  transitions: {
+    'select-list': {
+      enter (el) {
+        el.style.height = this.computedHeight(el)
+      },
+      beforeLeave (el) {
+        el.style.height = 0
+      }
+    }
+  },
   methods: {
     select (item, index) {
-      this.showList = false
       this.selected = item
       this.index = index
+      this.showList = false
     },
-
     showDropdownList () {
       this.$dispatch('component-select-show-list', this.showList)
       this.showList = !this.showList
-
-      if (!this.showList) return false
-
-      this.$nextTick(() => {
-        this.computedHeight(this.$els.selectList)
-      })
     },
-
     computedHeight (el) {
-      el.style.height = (() => {
-        let height = 0
-        Array.from(el.childNodes).forEach((child)=>{
-          if (child.nodeType === 1) {
-            let _style = window.getComputedStyle(child)
-            height += child.clientHeight +
-              (parseInt(_style.borderTopWidth, 10) || 0) +
-              (parseInt(_style.borderBottomWidth, 10) || 0)
-          }
-        })
-        return height
-      })() + 'px'
+      let height = 0
+      Array.from(el.childNodes).forEach((child)=>{
+        if (child.nodeType === 1) {
+          let _style = window.getComputedStyle(child)
+          height += child.clientHeight +
+            (Number(_style.borderTopWidth) || 0) +
+            (Number(_style.borderBottomWidth) || 0)
+        }
+      })
+      return height + 'px'
     }
   },
-
   ready () {
     document.addEventListener('click', (evnet)=>{
       this.showList = false
@@ -125,10 +124,10 @@ export default {
     top: 32px;
     overflow: hidden;
     width: 180px;
-    height: 0;
-    transition: height .3s ease-in-out;
+    transition: all .3s ease-in-out;
     border-radius: 2px;
     background-color: #fff;
+
     li {
       overflow: hidden;
       padding: 5px 0;
@@ -142,6 +141,13 @@ export default {
       &.active {
         background: rgba(0, 0, 0, .031);
       }
+    }
+    &.select-list-transition {
+      transition: all .3s ease-in-out;
+    }
+    &.select-list-enter, &.select-list-leave {
+      height: 0;
+      opacity: 0;
     }
   }
 }
