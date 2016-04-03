@@ -17,7 +17,7 @@
 
 <script>
 const componentList = ['avatar', 'buttons', 'checkbox', 'datePicker', 'dialog', 'input', 'pagination',
-'radio', 'search', 'select', 'switch', 'tooltips']
+'radio', 'search', 'select', 'switch', 'tooltips', 'snackbar', 'tables']
 
 export default {
   name: 'sidebar',

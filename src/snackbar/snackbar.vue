@@ -1,12 +1,14 @@
 <template>
-<div v-if="show" class="component-snackbar" style="{{{style}}}">
-  <p>{{msg}}</p>
-  <slot name="action"></slot>
+<div class="component-snackbar shadow--2dp" transition="snackbar"
+  @mouseenter="mouseenterHandle" @mouseleave="mouseleaveHandle">
+  <span class="message">{{msg}}</span>
+  <span class="action" v-if="actionText" @click="snackbarActionHandle">{{actionText}}</span>
 </div>
 </template>
 
 <script>
 export default {
+  name: 'component-snackbar',
   props: {
     show: {
       type: Boolean,
@@ -16,29 +18,31 @@ export default {
       type: String,
       required: true
     },
-    style: {
-      type: String
-    },
-    duration: {
-      type: Number,
-      default: 0
+    actionText: null
+  },
+  data () {
+    return {
+      snackbarTimer: null
     }
   },
-  watch: {
-    show () {
-      let self = this
-      let second = self.duration*1000
-
-      if(second > 0){
-        var t
-        if(self.show){
-          t = setTimeout(() => {
-            self.show = false
-          }, second)
-        }else{
-          clearTimeout(t)
-        }
-      }
+  ready () {
+    this.setTimeoutHideen()
+  },
+  methods: {
+    mouseenterHandle () {
+      clearTimeout(this.snackbarTimer)
+    },
+    mouseleaveHandle () {
+      this.setTimeoutHideen()
+    },
+    snackbarActionHandle () {
+      this.$dispatch('component-snackbar-action')
+      this.show = false
+    },
+    setTimeoutHideen () {
+      this.snackbarTimer = setTimeout(() => {
+        this.show = false
+      }, 5000)
     }
   }
 }
@@ -47,23 +51,26 @@ export default {
 <style lang="scss">
 .component-snackbar {
   position: fixed;
-  bottom: 10px;
-  left: 10px;
+  bottom: 0;
   display: flex;
-  min-width: 88px;
-  height: 36px;
-  padding: 10px;
+  justify-content: space-between;
+  left: 50%;
+  padding: 14px 24px;
   border-radius: 2px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .239216) 0 1px 4px;
-  justifycontent: space-between;
-
-  p {
-    font-size: 15px;
-    line-height: 36px;
-    margin: 0;
-    margin-right: 50px;
-    padding: 0;
+  background-color: #323232;
+  transform: translate(-50%);
+  color: #fff;
+  min-width: 288px;
+  max-width: 568px;
+  .action {
+    margin-left: 48px;
+    cursor: pointer;
+  }
+  &.snackbar-transition {
+    transition: all .3s ease-in-out;
+  }
+  &.snackbar-enter, &.snackbar-leave {
+    bottom: -50px;
   }
 }
 </style>
