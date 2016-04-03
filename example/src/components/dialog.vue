@@ -4,7 +4,8 @@
     <button @click="show =true">显示dialog</button>
     <component-dialog v-if="show" :show.sync="show" class="component-dialog">
       <div slot="content">
-        <h5>基本的 Dialog 组件的使用</h5>
+        <h3>你知道如何使用 Dialog 组件吗 ?</h3>
+        <p>基本的 Dialog 组件的使用</p>
       </div>
     </component-dialog>
 
@@ -43,7 +44,7 @@ export default {
 <style lang="scss">
 .component-dialog {
   .dialog-container {
-    width: 300px;
+    width: 360px;
   }
 }
 </style>

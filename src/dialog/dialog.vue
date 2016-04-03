@@ -1,15 +1,19 @@
 <template>
-<div class="dialog-mask" transition="dialog" @click="dialogMaskHandle">
-  <div class="dialog-wrapper">
-    <div class="dialog-container shadow--4dp">
-      <span class="dialog-close" @click.stop="dialogCloseHandle">
-        <svg width="20px" height="20px" viewPort="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-          <line x1="1" y1="12" x2="12" y2="1" stroke="#666666" stroke-width="2"/>
-          <line x1="1" y1="1" x2="12" y2="12" stroke="#666666" stroke-width="2"/>
-        </svg>
-      </span>
+<div class="component-dialog" transition="dialog" @click="dialogMaskHandle">
+  <div class="dialog-wrap">
+    <div class="dialog-container">
       <div class="dialog-content">
         <slot name="content"></slot>
+      </div>
+      <div class="dialog-actions">
+        <slot name="footer">
+          <component-button @click="sureHandle">
+            <span slot="content">确认</span>
+          </component-button>
+          <component-button @click="cancelHandle">
+            <span slot="content">取消</span>
+          </component-button>
+        </slot>
       </div>
     </div>
   </div>
@@ -26,20 +30,31 @@ export default {
     }
   },
   methods: {
+    hiddenDialog () {
+      this.show = false
+    },
     dialogMaskHandle (event) {
-      if (event.target.classList.contains('dialog-wrapper')) {
-        this.show = false
+      if (event.target.classList.contains('dialog-wrap')) {
+        this.hiddenDialog()
       }
     },
-    dialogCloseHandle () {
-      this.show = false
+    cancelHandle () {
+      this.$dispatch('component-dialog-cancel')
+      this.hiddenDialog()
+    },
+    sureHandle () {
+      this.$dispatch('component-dialog-sure')
+      this.hiddenDialog()
     }
+  },
+  components: {
+    'component-button': require('../buttons/buttons')
   }
 }
 </script>
 
 <style lang="scss">
-.dialog-mask {
+.component-dialog {
   position: fixed;
   z-index: 9998;
   top: 0;
@@ -48,35 +63,28 @@ export default {
   width: 100%;
   height: 100%;
   transition: opacity .3s ease;
-  background-color: rgba(0, 0, 0, .5);
-  .dialog-wrapper {
+  background-color: rgba(0, 0, 0, .15);
+  .dialog-wrap {
     display: table-cell;
-    transform: translate3d(0px, 0px, 0px);
     vertical-align: middle;
     .dialog-container {
       position: relative;
-      display: flex;
-      min-width: 500px;
-      min-height: 300px;
+      padding: 14px;
       margin: 0 auto;
       transition: all .3s ease;
       border-radius: 2px;
       background-color: #fff;
-
       justify-content: center;
       align-items: center;
-      .dialog-close {
-        position: absolute;
-        z-index: 1000;
-        top: 8px;
-        right: 5px;
-        cursor: pointer;
-        transition: all .3s;
-        svg:hover {
-          line {
-            stroke: #888;
-          };
-        }
+      box-shadow: 0 9px 46px 8px rgba(0, 0, 0, 0.14), 0 11px 15px -7px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.2);
+      .dialog-content {
+        padding: 20px 24px 24px 24px;
+        color: rgba(0,0,0, 0.54);
+      }
+      .dialog-actions {
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
       }
     }
   }
