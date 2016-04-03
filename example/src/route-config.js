@@ -51,6 +51,14 @@ export function configRouter (router) {
     '/tooltips': {
       name: 'tooltips',
       component: require('./components/tooltips')
+    },
+    '/snackbar': {
+      name: 'snackbar',
+      component: require('./components/snackbar')
+    },
+    '/tables': {
+      name: 'tables',
+      component: require('./components/tables')
     }
   })
 }

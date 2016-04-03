@@ -8,28 +8,21 @@
             checkbox
             <div><checkbox :is-checked.sync="checkedAllState"></checkbox></div>
           </th>
-          <th>
-            Table attribute name
-            <div>attribute name</div>
-          </th>
-          <th>
-            Value
-            <div>Value</div>
-          </th>
-          <th>
-            Description
-            <div>Description</div>
+          <th v-for="item in tableData[0] | tableDataKeys">
+            {{item}}
+            <div>{{item}}</div>
           </th>
         </tr>
       </thead>
 
       <tbody>
-        <tr v-for="(index,item) in tableData"
-          @click="rowSelect(index)"
-          track-by="$index"
+        <tr v-for="(index, item) in tableData" track-by="$index"
+          @click="rowSelect($index)"
           :class="{active: item.checked}">
           <td v-if="hasCheckbox"><checkbox :is-checked="item.checked"></checkbox></td>
-          <td v-for="ele in item.value">{{ele}}</td>
+          <td v-for="ele in item | tableDataValues">
+            {{ele}}
+          </td>
         </tr>
       </tbody>
     </table>
@@ -41,33 +34,48 @@
 export default {
   name: 'component-table',
   props: {
-    tableData: null,
+    tableData: {
+      type: Array,
+      required: true
+    },
     hasCheckbox: {
       type: Boolean,
       default: false
     }
   },
-
   data () {
     return {
       checkedAllState: false
     }
   },
+  created () {
+    this.tableData = this.tableData.map(item => {
+      return Object.assign({}, item, {
+        checked: item.checked === void (0) ? false : item.checked
+      })
+    })
+  },
 
+  filters: {
+    tableDataValues (value) {
+      return Object.values(value).filter(item => typeof item !== 'boolean')
+    },
+    tableDataKeys (value) {
+      return Object.keys(value).filter(item => item !== 'checked')
+    }
+  },
   watch: {
-    checkedAllState (value) {
-      this.tableData.forEach((item)=>{
-        item.checked = value
+    checkedAllState (flag) {
+      this.tableData.forEach(item => {
+        item.checked = flag
       })
     }
   },
-
   methods: {
     rowSelect (index) {
       this.tableData[index].checked = !this.tableData[index].checked
     }
   },
-
   components: {
     checkbox: require('../checkbox/checkbox')
   }
@@ -83,6 +91,7 @@ export default {
   border: 1px solid rgba(0, 0, 0, .12);
   background: #fff;
   & > .container {
+    max-height: 300px;
     overflow-y: auto;
     table {
       width: 100%;
@@ -133,5 +142,4 @@ export default {
     }
   }
 }
-
 </style>
