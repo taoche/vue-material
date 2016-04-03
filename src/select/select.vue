@@ -1,23 +1,25 @@
 <template>
 <div class="component-select">
-  <div class="select-block">
-    <div class="m-select" @click.stop="showDropdownList">
-      {{selected}}
-      <i class="select-triangle" :class="{'open': showList}">
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path fill="currentColor" d="M3 2l10 6-10 6z"></path>
-        </svg>
-      </i>
-    </div>
-
-    <slot name="selectList">
-      <ul class="list-box shadow--2dp" v-show="showList" transition="select-list">
-        <li v-for="item in values" track-by="$index"
+  <div class="select-input" @click.stop="showDropdownList">
+    {{selected}}
+    <i class="select-triangle" :class="{'open': showList}">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+        <path fill="currentColor" d="M3 2l10 6-10 6z"></path>
+      </svg>
+    </i>
+  </div>
+  <slot name="selectList">
+    <div class="list-box shadow--2dp" v-show="showList" transition="select-list" v-el:list-box>
+      <coponent-search class="select-search-bar" v-if="values.length > 10"
+        :query-text.sync="queryText"
+        @click.stop></coponent-search>
+      <ul>
+        <li v-for="item in values | filterBy queryText" track-by="$index"
           :class="{'active': item === selected}"
           @click="select(item, $index)">{{item}}</li>
       </ul>
-    </slot>
-  </div>
+    </div>
+  </slot>
 </div>
 </template>
 
@@ -33,13 +35,14 @@ export default {
   },
   data () {
     return {
-      showList: false
+      showList: false,
+      queryText: ''
     }
   },
   transitions: {
     'select-list': {
       enter (el) {
-        el.style.height = this.computedHeight(el)
+        el.style.height = Math.min(parseInt(window.getComputedStyle(el)['max-height'], 10), parseInt(this.computedHeight(el), 10)) + 'px'
       },
       beforeLeave (el) {
         el.style.height = 0
@@ -48,6 +51,7 @@ export default {
   },
   methods: {
     select (item, index) {
+      this.queryText = ''
       this.selected = item
       this.index = index
       this.showList = false
@@ -62,17 +66,25 @@ export default {
         if (child.nodeType === 1) {
           let _style = window.getComputedStyle(child)
           height += child.clientHeight +
-            (Number(_style.borderTopWidth) || 0) +
-            (Number(_style.borderBottomWidth) || 0)
+            (parseInt(_style.borderTopWidth, 10) || 0) +
+            (parseInt(_style.borderBottomWidth, 10) || 0)
         }
       })
       return height + 'px'
+    }
+  },
+  events: {
+    'search-inputing' () {
+      this.$els.listBox.style.height = this.computedHeight(this.$els.listBox)
     }
   },
   ready () {
     document.addEventListener('click', (evnet)=>{
       this.showList = false
     })
+  },
+  components: {
+    'coponent-search': require('../search/search')
   }
 }
 </script>
@@ -81,7 +93,7 @@ export default {
 .component-select {
   position: relative;
   display: inline-block;
-  .m-select {
+  .select-input {
     font-size: 16px;
     line-height: 32px;
     position: relative;
@@ -127,7 +139,19 @@ export default {
     transition: all .3s ease-in-out;
     border-radius: 2px;
     background-color: #fff;
-
+    max-height: 300px;
+    overflow-y: auto;
+    .select-search-bar {
+      height: 10px;
+      border: none;
+      border-radius: 0;
+      border-bottom: 1px solid rgba(0,0,0,.16);
+      font-size: 12px;
+      .search-icon {
+        width: 12px;
+        height: 12px;
+      }
+    }
     li {
       overflow: hidden;
       padding: 5px 0;
@@ -136,9 +160,7 @@ export default {
       text-indent: 20px;
       text-overflow: ellipsis;
       color: rgba(0, 0, 0, .87);
-      &:focus,
-      &:hover,
-      &.active {
+      &:hover{
         background: rgba(0, 0, 0, .031);
       }
     }
