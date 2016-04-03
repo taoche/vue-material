@@ -15,7 +15,7 @@
         @click.stop></coponent-search>
       <ul>
         <li v-for="item in values | filterBy queryText" track-by="$index"
-          :class="{'active': item === selected}"
+          :class="{'active': $index === activeIndex}"
           @click="select(item, $index)">{{item}}</li>
       </ul>
     </div>
@@ -23,18 +23,27 @@
 </div>
 </template>
 
-<script >
+<script>
+const KEY_PRESS_UP = 38
+const KEY_PRESS_DOWN = 40
+const KEY_PRESS_ENTER = 13
+
 export default {
   name: 'component-select',
   props: {
     values: {
       required: true
     },
-    index: null,
     selected: null
+  },
+  computed: {
+    filteredValues () {
+      return this.$options.filters.filterBy(this.values, this.queryText)
+    }
   },
   data () {
     return {
+      activeIndex: 0,
       showList: false,
       queryText: ''
     }
@@ -49,12 +58,18 @@ export default {
       }
     }
   },
+  created () {
+    this.activeIndex = this.findActiveIndex()
+  },
   methods: {
+    findActiveIndex () {
+      return this.values.findIndex(item => item === this.selected)
+    },
     select (item, index) {
-      this.queryText = ''
       this.selected = item
-      this.index = index
+      this.activeIndex = this.findActiveIndex()
       this.showList = false
+      this.queryText = ''
     },
     showDropdownList () {
       this.$dispatch('component-select-show-list', this.showList)
@@ -74,8 +89,26 @@ export default {
     }
   },
   events: {
-    'search-inputing' () {
+    'search-keyup' () {
       this.$els.listBox.style.height = this.computedHeight(this.$els.listBox)
+    },
+    'search-keydown' (query, keyCode) {
+      switch (keyCode) {
+        case KEY_PRESS_UP:
+          this.activeIndex = Math.max(this.activeIndex - 1, 0)
+          break
+        case KEY_PRESS_DOWN:
+          this.activeIndex = Math.min(this.activeIndex + 1, this.filteredValues.length - 1)
+          break
+        case KEY_PRESS_ENTER:
+          this.selected = this.filteredValues[this.activeIndex]
+          this.activeIndex = this.findActiveIndex()
+          this.showList = false
+          this.queryText = ''
+          break
+        default:
+          break
+      }
     }
   },
   ready () {
@@ -160,7 +193,8 @@ export default {
       text-indent: 20px;
       text-overflow: ellipsis;
       color: rgba(0, 0, 0, .87);
-      &:hover{
+      &:focus,
+      &:hover, &.active {
         background: rgba(0, 0, 0, .031);
       }
     }

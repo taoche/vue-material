@@ -6,6 +6,7 @@
 
   <input class="search-input" type="text" v-model="queryText" placeholder="{{placeholder}}"
     @keyup.enter="beSearch"
+    @keyup="emitKeyup"
     @keydown="emitKeydown"
     @input="inputing | debounce 500"/>
 </div>
@@ -15,10 +16,7 @@
 export default {
   name: 'component-search',
   props: {
-    queryText: {
-      type: String,
-      default: ''
-    },
+    queryText: String,
     placeholder: {
       type: String,
       default: '请输入关键字'
@@ -37,8 +35,11 @@ export default {
       if (!this.queryText.length) return false
       this.$dispatch('search-action', this.trimQueryText)
     },
+    emitKeyup (event) {
+      this.$dispatch('search-keyup', this.trimQueryText, event.keyCode)
+    },
     emitKeydown (event) {
-      this.$dispatch('search-keypress', this.trimQueryText, event.keyCode)
+      this.$dispatch('search-keydown', this.trimQueryText, event.keyCode)
     },
     inputing () {
       this.$dispatch('search-inputing', this.trimQueryText)

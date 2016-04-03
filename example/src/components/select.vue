@@ -9,7 +9,7 @@
 
     <example-code>
       <textarea>
-      <component-select :values="values"></component-select>
+      <component-select :values="values" :selected.sync="selected"></component-select>
 
       data () {
         return {
