@@ -1,5 +1,5 @@
 <template>
-<div class="component-table">
+<div class="component-table" @mouseleave="tablesLeaveHandle">
   <div class="container">
     <table>
       <thead>
@@ -15,7 +15,7 @@
         </tr>
       </thead>
 
-      <tbody>
+      <tbody @mousewheel="tablesWheelHandle">
         <tr v-for="(index, item) in tableData" track-by="$index"
           @click="rowSelect($index)"
           :class="{active: item.checked}">
@@ -71,9 +71,19 @@ export default {
       })
     }
   },
+  ready () {
+    this.domBody = document.querySelector('body')
+  },
+
   methods: {
     rowSelect (index) {
       this.tableData[index].checked = !this.tableData[index].checked
+    },
+    tablesWheelHandle () {
+      this.domBody.style.overflow = 'hidden'
+    },
+    tablesLeaveHandle () {
+      this.domBody.style.overflow = 'inherit'
     }
   },
   components: {
