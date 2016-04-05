@@ -8,6 +8,8 @@ import App from './App'
 // styles
 import 'lancer-css/src/application.scss'
 
+Vue.config.debug = true
+
 // install router
 Vue.use(VueRouter)
 

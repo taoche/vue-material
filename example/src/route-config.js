@@ -59,6 +59,10 @@ export function configRouter (router) {
     '/tables': {
       name: 'tables',
       component: require('./components/tables')
+    },
+    '/tabs': {
+      name: 'tabs',
+      component: require('./components/tabs')
     }
   })
 }
