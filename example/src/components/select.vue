@@ -20,6 +20,26 @@
       </textarea>
     </example-code>
 
+
+    <h3>拓展——选择数量超过10个  支持搜索 和 键盘选择</h3>
+    <component-select :values="moreValues" :selected.sync="moreSelected"></component-select>
+
+    <code class="example">
+      selected: {{moreSelected | json}}
+    </code>
+
+    <example-code>
+      <textarea>
+      <component-select :values="moreValues" :selected.sync="moreSelected"></component-select>
+
+      data () {
+        return {
+          moreValues: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k'],
+          moreSelected: ''
+        }
+      }
+      </textarea>
+    </example-code>
   </div>
 </template>
 
@@ -32,7 +52,9 @@ export default {
   data () {
     return {
       values: ['请选择', '男', '女'],
-      selected: '男'
+      moreValues: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k'],
+      selected: '男',
+      moreSelected: ''
     }
   },
   components: {
