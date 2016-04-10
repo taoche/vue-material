@@ -9,8 +9,8 @@
     <tbody :class="{'date-left': dateTransitionType == 'left',
       'date-right': dateTransitionType == 'right'}">
 
-      <tr v-for="week in calendar" transition="date">
-        <td v-for="day in week" @click="selectDate(day.date)"
+      <tr v-for="week in calendar" transition="date" track-by="$index">
+        <td v-for="day in week" track-by="$index" @click="selectDate(day.date)"
           :class="{'today': day.is_today,
             'disabled': day.is_disabled,
             'selected': isSelected(day.date),
