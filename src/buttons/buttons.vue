@@ -67,13 +67,13 @@ export default {
     width:4px;
     height:4px;
     border-radius:50%;
-    animation:ripple 1.4s;
+    animation: button-ripple 1.4s;
     transform:scale(100);
     opacity:0;
   }
 }
 
-@keyframes ripple{
+@keyframes button-ripple{
   from{
     transform:scale(0);
     opacity:0.5;
