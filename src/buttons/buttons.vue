@@ -58,29 +58,28 @@ export default {
 
 <style lang="scss">
 .component-button {
-  overflow:hidden;
-
-  .ripple{
-    position:absolute;
-    display:block;
-    background:#fff;
-    width:4px;
-    height:4px;
-    border-radius:50%;
+  overflow: hidden;
+  .ripple {
+    position: absolute;
+    display: block;
+    width: 4px;
+    height: 4px;
+    transform: scale(100);
     animation: button-ripple 1.4s;
-    transform:scale(100);
-    opacity:0;
+    opacity: 0;
+    border-radius: 50%;
+    background: #fff;
   }
 }
 
-@keyframes button-ripple{
-  from{
-    transform:scale(0);
-    opacity:0.5;
+@keyframes button-ripple {
+  from {
+    transform: scale(0);
+    opacity: .5;
   }
-  to{
-    transform:scale(100);
-    opacity:0;
+  to {
+    transform: scale(100);
+    opacity: 0;
   }
 }
 </style>

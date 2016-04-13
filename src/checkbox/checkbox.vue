@@ -50,7 +50,6 @@ export default {
 <style lang="scss">
 .component-checkbox {
   cursor: pointer;
-
   &.disabled {
     .checkbox-tag {
       display: none;
@@ -61,27 +60,27 @@ export default {
     }
   }
   .ripple {
-    position:absolute;
-    display:block;
-    background: rgba(#000, .5);
-    width:4px;
-    height:4px;
-    border-radius:50%;
+    position: absolute;
     top: 50%;
     left: 50%;
+    display: block;
+    width: 4px;
+    height: 4px;
     margin: -2px;
-    animation: checkbox-ripple .8s;
     transform: scale(13);
+    animation: checkbox-ripple .8s;
     opacity: 0;
+    border-radius: 50%;
+    background: rgba(#000, .5);
   }
-  @keyframes checkbox-ripple{
-    from{
-      transform:scale(0);
-      opacity:.5;
+  @keyframes checkbox-ripple {
+    from {
+      transform: scale(0);
+      opacity: .5;
     }
-    to{
-      transform:scale(13);
-      opacity:0;
+    to {
+      transform: scale(13);
+      opacity: 0;
     }
   }
 }

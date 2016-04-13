@@ -52,16 +52,17 @@ export default {
 .component-snackbar {
   position: fixed;
   bottom: 0;
-  display: flex;
-  justify-content: space-between;
   left: 50%;
-  padding: 14px 24px;
-  border-radius: 2px;
-  background-color: #323232;
-  transform: translate(-50%);
-  color: #fff;
+  display: flex;
   min-width: 288px;
   max-width: 568px;
+  padding: 14px 24px;
+  transform: translate(-50%);
+  color: #fff;
+  border-radius: 2px;
+  background-color: #323232;
+
+  justify-content: space-between;
   .action {
     margin-left: 48px;
     cursor: pointer;
@@ -69,7 +70,8 @@ export default {
   &.snackbar-transition {
     transition: all .3s ease-in-out;
   }
-  &.snackbar-enter, &.snackbar-leave {
+  &.snackbar-enter,
+  &.snackbar-leave {
     bottom: -50px;
   }
 }

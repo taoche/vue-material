@@ -168,18 +168,18 @@ export default {
     z-index: 1;
     top: 32px;
     overflow: hidden;
+    overflow-y: auto;
     width: 180px;
+    max-height: 300px;
     transition: all .3s ease-in-out;
     border-radius: 2px;
     background-color: #fff;
-    max-height: 300px;
-    overflow-y: auto;
     .select-search-bar {
+      font-size: 12px;
       height: 10px;
       border: none;
-      border-radius: 0;
       border-bottom: 1px solid rgba(0,0,0,.16);
-      font-size: 12px;
+      border-radius: 0;
       .search-icon {
         width: 12px;
         height: 12px;
@@ -194,14 +194,16 @@ export default {
       text-overflow: ellipsis;
       color: rgba(0, 0, 0, .87);
       &:focus,
-      &:hover, &.active {
+      &:hover,
+      &.active {
         background: rgba(0, 0, 0, .031);
       }
     }
     &.select-list-transition {
       transition: all .3s ease-in-out;
     }
-    &.select-list-enter, &.select-list-leave {
+    &.select-list-enter,
+    &.select-list-leave {
       height: 0;
       opacity: 0;
     }

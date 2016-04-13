@@ -42,32 +42,32 @@ export default {
 
 <style lang="scss">
 .component-tabs {
-  background: #3993e5;
-  height: 48px;
   position: relative;
+  height: 48px;
+  background: #3993e5;
   .tabs {
     display: flex;
     width: 100%;
     height: 100%;
-    align-items: center;
     text-align: center;
-    .tabs-item{
-      flex: 1;
-      color:rgba(#fff, .7);
+    align-items: center;
+    .tabs-item {
       cursor: pointer;
-      &.active{
-        color:#fff;
+      color: rgba(#fff, .7);
+
+      flex: 1;
+      &.active {
+        color: #fff;
       }
     }
   }
-
   .indicator {
-    height: 2px;
-    background: #ffff86;
     position: absolute;
-    left:0;
     bottom: 0;
+    left: 0;
+    height: 2px;
     transition: all .3s ease-out;
+    background: #ffff86;
   }
 }
 </style>
