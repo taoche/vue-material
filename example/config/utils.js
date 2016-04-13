@@ -1,6 +1,12 @@
+var path = require('path')
+var config = require('../config')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-module.exports = function (options) {
+exports.assetsPath = function (_path) {
+  return path.posix.join(config.build.assetsSubDirectory, _path)
+}
+
+exports.cssLoaders = function (options) {
   options = options || {}
   // generate loader string to be used with extract text plugin
   function generateLoaders (loaders) {
@@ -26,6 +32,7 @@ module.exports = function (options) {
   // http://vuejs.github.io/vue-loader/configurations/extract-css.html
   return {
     css: generateLoaders(['css']),
+    postcss: generateLoaders(['css']),
     less: generateLoaders(['css', 'less']),
     sass: generateLoaders(['css', 'sass?indentedSyntax']),
     scss: generateLoaders(['css', 'sass']),
