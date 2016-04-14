@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import cswitch from 'vue-material-ui/src/switch/switch'
+import cswitch from 'src/switch/switch'
 import code from '../example-code'
 
 export default {

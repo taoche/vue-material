@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import checkbox from 'vue-material-ui/src/checkbox/checkbox'
+import checkbox from 'src/checkbox/checkbox'
 import code from '../example-code'
 
 export default {

@@ -6,7 +6,7 @@ a<template>
 </template>
 
 <script>
-import toolbar from 'vue-material-ui/src/toolbar/toolbar'
+import toolbar from 'src/toolbar/toolbar'
 import code from '../example-code'
 
 export default {

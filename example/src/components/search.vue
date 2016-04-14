@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import search from 'vue-material-ui/src/search/search'
+import search from 'src/search/search'
 import code from '../example-code'
 
 export default {

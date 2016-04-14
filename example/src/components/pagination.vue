@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import pagination from 'vue-material-ui/src/pagination/pagination'
+import pagination from 'src/pagination/pagination'
 import code from '../example-code'
 
 export default {

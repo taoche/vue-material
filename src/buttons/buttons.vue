@@ -31,7 +31,7 @@ export default {
       return this.state === 'disabled'
     }
   },
-  methods:{
+  methods: {
     clickHandle () {
       this.$dispatch(this.eventName)
     },

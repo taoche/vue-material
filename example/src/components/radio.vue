@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import radio from 'vue-material-ui/src/radio/radio'
+import radio from 'src/radio/radio'
 import code from '../example-code'
 
 export default {

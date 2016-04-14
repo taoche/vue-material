@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import tabs from 'vue-material-ui/src/tabs/tabs'
+import tabs from 'src/tabs/tabs'
 import code from '../example-code'
 
 export default {

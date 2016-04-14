@@ -23,7 +23,7 @@ a<template>
 </template>
 
 <script>
-import tooltips from 'vue-material-ui/src/tooltips/tooltips'
+import tooltips from 'src/tooltips/tooltips'
 import code from '../example-code'
 
 export default {

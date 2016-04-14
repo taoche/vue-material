@@ -175,7 +175,7 @@ const mockDataHoldHeader = [{
   'Status': '已验收'
 }]
 
-import tables from 'vue-material-ui/src/tables/tables'
+import tables from 'src/tables/tables'
 import code from '../example-code'
 
 export default {

@@ -28,7 +28,7 @@ export default {
       default: 'radio-click'
     }
   },
-  methods:{
+  methods: {
     changeState () {
       if (this.state === 'disabled') return false
 

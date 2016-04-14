@@ -9,7 +9,7 @@
 <script>
 export default {
   name: 'date-pick-footer',
-  methods:{
+  methods: {
     datePickerHide () {
       this.$dispatch('date-picker-hide')
     },

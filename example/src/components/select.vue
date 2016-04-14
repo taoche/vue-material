@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import select from 'vue-material-ui/src/select/select'
+import select from 'src/select/select'
 import code from '../example-code'
 
 export default {

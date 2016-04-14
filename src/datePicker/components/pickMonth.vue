@@ -49,7 +49,7 @@ export default {
     },
 
     checkIsEnabled (date) {
-      return  date.setDate(30) > new Date(this.minDate) && date.setDate(1) < new Date(this.maxDate)
+      return date.setDate(30) > new Date(this.minDate) && date.setDate(1) < new Date(this.maxDate)
     },
 
     addMonth (date, number) {

@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import buttons from 'vue-material-ui/src/buttons/buttons'
+import buttons from 'src/buttons/buttons'
 import code from '../example-code'
 
 export default {

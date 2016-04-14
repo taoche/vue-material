@@ -35,9 +35,9 @@ export default {
       return this.target.getBoundingClientRect()
     }
   },
-  watch:{
+  watch: {
     target (val) {
-      this.$nextTick(()=> {
+      this.$nextTick(() => {
         if (!this.$els.tooltip) return false
         this.positionData = this.computedPositon()
       })
@@ -57,28 +57,28 @@ export default {
       let _sHeight = domTooltip.offsetHeight
 
       let setDirection = {
-        top:() => {
+        top: () => {
           return {
             left: _tLeft + (_tWidth - _sWidth) / 2,
             top: _tTop - _margin - _sHeight
           }
         },
 
-        right:() => {
+        right: () => {
           return {
             left: _tLeft + _margin + _tWidth,
             top: _tTop
           }
         },
 
-        bottom:() => {
+        bottom: () => {
           return {
             left: _tLeft + (_tWidth - _sWidth) / 2,
             top: _tTop + _tHeight + _margin
           }
         },
 
-        left:() => {
+        left: () => {
           return {
             left: _tLeft - _margin - _sWidth,
             top: _tTop

@@ -113,7 +113,7 @@ export default {
     }
   },
 
-  events:{
+  events: {
     'date-picker-hide' () {
       this.show = false
     },

@@ -77,7 +77,7 @@ export default {
     },
     computedHeight (el) {
       let height = 0
-      Array.from(el.childNodes).forEach((child)=>{
+      Array.from(el.childNodes).forEach((child) => {
         if (child.nodeType === 1) {
           let _style = window.getComputedStyle(child)
           height += child.clientHeight +
@@ -112,7 +112,7 @@ export default {
     }
   },
   ready () {
-    document.addEventListener('click', (evnet)=>{
+    document.addEventListener('click', (evnet) => {
       this.showList = false
     })
   },

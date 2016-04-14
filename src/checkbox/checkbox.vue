@@ -35,7 +35,7 @@ export default {
       return tmp.body.children[0]
     },
     mousedownHandle (event) {
-      let domRipple = this.parseHTML(`<span class="ripple"></span>`)
+      let domRipple = this.parseHTML('<span class="ripple"></span>')
 
       this.$el.appendChild(domRipple)
 

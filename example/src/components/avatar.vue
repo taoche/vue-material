@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import avatar from 'vue-material-ui/src/avatar/avatar'
+import avatar from 'src/avatar/avatar'
 import code from '../example-code'
 export default {
   name: 'example-avatar',

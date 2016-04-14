@@ -52,33 +52,28 @@ export default {
       let pageArr = []
 
       if (this.pageLength <= this.screenPagination) {
-
         for (let i = 1, len = this.pageLength; i <= len; i++) {
           pageArr.push({
             page: i,
             isCurrent: i === this.currentPage
           })
         }
-
       } else {
         if (this.currentPage <= this.valve) {
-
           for (let i = 1, len = this.currentPage; i <= len; i++) {
             pageArr.push({
               page: i,
               isCurrent: i === len
             })
           }
-
         } else {
-
           pageArr.push({
             page: 1
           }, {
             page: 2
           }, {
             page: '...',
-            notPage:true
+            notPage: true
           })
 
           // 倒数3个数
@@ -91,7 +86,6 @@ export default {
         }
 
         if (this.currentPage > this.pageLength - this.valve) {
-
           for (let i = 1, len = this.pageLength; i <= len; i++) {
             if (i > this.currentPage) {
               pageArr.push({
@@ -99,32 +93,28 @@ export default {
               })
             }
           }
-
         } else {
-
           pageArr.push({
             page: this.currentPage + 1
           }, {
             page: this.currentPage + 2
           }, {
             page: '...',
-            notPage:true
+            notPage: true
           }, {
             page: this.pageLength - 1
           }, {
             page: this.pageLength
           })
         }
-
       }
 
       return pageArr
     }
   },
 
-  methods:{
+  methods: {
     selectPage (index, event) {
-
       if (event.target.parentNode.classList.contains('not-page') ||
       this.currentPage === index) return false
 

@@ -33,7 +33,7 @@ export default {
     }
   },
 
-  watch:{
+  watch: {
     current (newVal, oldVal) {
       this.dateTransitionType = newVal > oldVal ? 'right' : 'left'
     }
@@ -61,7 +61,6 @@ export default {
 
       // 填充一个月时间
       for (let nbWeek = 0; nbWeek < 6; nbWeek++) {
-
         week = []
 
         for (let nbDays = 0; nbDays < 7; nbDays++) {

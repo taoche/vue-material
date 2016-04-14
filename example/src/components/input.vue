@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import input from 'vue-material-ui/src/input/input'
+import input from 'src/input/input'
 import code from '../example-code'
 
 export default {

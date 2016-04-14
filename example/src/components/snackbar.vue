@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import snackbar from 'vue-material-ui/src/snackbar/snackbar'
+import snackbar from 'src/snackbar/snackbar'
 import code from '../example-code'
 
 export default {

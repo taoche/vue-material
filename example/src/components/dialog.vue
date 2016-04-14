@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import dialog from 'vue-material-ui/src/dialog/dialog'
+import dialog from 'src/dialog/dialog'
 import code from '../example-code'
 
 export default {

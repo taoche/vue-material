@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import datePicker from 'vue-material-ui/src/datePicker/datePicker'
+import datePicker from 'src/datePicker/datePicker'
 import code from '../example-code'
 
 export default {
