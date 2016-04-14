@@ -2,11 +2,11 @@
 <div class="home">
   <h3>Vue Material UI</h3>
   <p>目前还不是很完善....</p>
-
   <h3>如何使用</h3>
 
   <example-code>
     <textarea>
+    版本: 0.0.37-alpha
     npm install lancer-css --save (这是依赖的CSS样式库)
     npm install vue-material-ui --save
     </textarea>
