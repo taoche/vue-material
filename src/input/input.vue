@@ -1,9 +1,11 @@
 <template>
 <div class="component-input">
-  <input class="m-input" :type="type" v-model="value"
+  <input class="m-input" required :type="type" v-model="value"
     :placeHolder="hint"
     :readonly="isReadOnly"
+    :disabled="isDisabled"
     :class="{error: error, disabled: isDisabled}"/>
+  <span class="bar"></span>
 </div>
 </template>
 
@@ -37,6 +39,11 @@ export default {
 </script>
 
 <style lang="scss">
+%bar {
+  width: 50%;
+  border-bottom: 0;
+}
+
 .component-input {
   position: relative;
   display: inline-block;
@@ -54,24 +61,55 @@ export default {
     border-bottom: 1px solid #e0e0e0;
     outline: none;
     background: none;
-    &:focus,
-    &:hover {
-      padding-bottom: 0;
-      border-bottom: 2px solid #3c80f6;
-    }
     &::-webkit-input-placeholder {
       font-size: 12px;
       color: rbga(0,0,0,.38);
     }
     &.error {
-      padding-bottom: 0;
-      border-bottom: 2px solid #f44b45;
+      & ~ .bar:before,
+      & ~ .bar:after {
+        background: #f44b45;
+
+        @extend %bar
+      }
     }
     &:disabled,
     &.disabled {
       cursor: not-allowed;
       color: #b2b2b2;
       border-bottom-style: dotted;
+    }
+    &:not([readonly]):not(.error):focus ~ .bar:before,
+    &:not([readonly]):not(.error):focus ~ .bar:after {
+      background: #3c80f6;
+
+      @extend %bar
+    }
+    &:not([readonly]):not(.error):valid ~ .bar:before,
+    &:not([readonly]):not(.error):valid ~ .bar:after {
+      background: #42b68a;
+
+      @extend %bar
+    }
+  }
+  .bar {
+    position: relative;
+    display: block;
+    &:before,
+    &:after {
+      position: absolute;
+      bottom: .5px;
+      width: 0;
+      height: 2px;
+      content: '';
+      transition: .2s ease all;
+      background: #3c80f6;
+    }
+    &:before {
+      left: 50%;
+    }
+    &:after {
+      right: 50%;
     }
   }
 }
