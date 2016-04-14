@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import appendRipple from 'utils/appendRipple'
+
 export default {
   name: 'component-checkbox',
   props: {
@@ -29,19 +31,8 @@ export default {
       this.isChecked = !this.isChecked
       this.$dispatch('checkbox-state-change', event, this.isChecked)
     },
-    parseHTML (fragments) {
-      let tmp = document.implementation.createHTMLDocument()
-      tmp.body.innerHTML = fragments
-      return tmp.body.children[0]
-    },
     mousedownHandle (event) {
-      let domRipple = this.parseHTML('<span class="ripple"></span>')
-
-      this.$el.appendChild(domRipple)
-
-      domRipple.addEventListener('animationend', () => {
-        domRipple.parentNode.removeChild(domRipple)
-      })
+      appendRipple(this.$el)
     }
   }
 }

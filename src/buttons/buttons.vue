@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import appendRipple from 'utils/appendRipple'
+
 export default {
   name: 'component-button',
   props: {
@@ -35,22 +37,11 @@ export default {
     clickHandle () {
       this.$dispatch(this.eventName)
     },
-    parseHTML (fragments) {
-      let tmp = document.implementation.createHTMLDocument()
-      tmp.body.innerHTML = fragments
-      return tmp.body.children[0]
-    },
     mousedownHandle (event) {
       let x = event.pageX - event.currentTarget.offsetLeft
       let y = event.pageY - event.currentTarget.offsetTop
 
-      let domRipple = this.parseHTML(`<span class="ripple" style="left:${x - 2}px;top:${y - 2}px"></span>`)
-
-      this.$el.appendChild(domRipple)
-
-      domRipple.addEventListener('animationend', () => {
-        domRipple.parentNode.removeChild(domRipple)
-      })
+      appendRipple(this.$el, x, y)
     }
   }
 }
