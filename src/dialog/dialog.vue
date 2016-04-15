@@ -1,5 +1,5 @@
 <template>
-<div class="component-dialog" transition="dialog" @click="dialogMaskHandle">
+<div class="component-dialog" :class="{'is-modal': isModal}" transition="dialog" @click="dialogMaskHandle">
   <div class="dialog-wrap">
     <div class="dialog-container">
       <div class="dialog-content">
@@ -25,6 +25,10 @@ export default {
   name: 'component-dialog',
   props: {
     show: {
+      type: Boolean,
+      required: true
+    },
+    isModal: {
       type: Boolean,
       required: true
     }
@@ -63,27 +67,31 @@ export default {
   width: 100%;
   height: 100%;
   transition: opacity .3s ease;
-  background-color: rgba(0, 0, 0, .15);
+  &.is-modal {
+    background-color: rgba(0, 0, 0, .15);
+  }
   .dialog-wrap {
     display: table-cell;
     vertical-align: middle;
     .dialog-container {
       position: relative;
-      padding: 14px;
       margin: 0 auto;
+      padding: 14px;
       transition: all .3s ease;
       border-radius: 2px;
       background-color: #fff;
+      box-shadow: 0 9px 46px 8px rgba(0, 0, 0, .14), 0 11px 15px -7px rgba(0, 0, 0, .12), 0 24px 38px 3px rgba(0, 0, 0, .2);
+
       justify-content: center;
       align-items: center;
-      box-shadow: 0 9px 46px 8px rgba(0, 0, 0, 0.14), 0 11px 15px -7px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.2);
       .dialog-content {
         padding: 20px 24px 24px 24px;
-        color: rgba(0,0,0, 0.54);
+        color: rgba(0,0,0, .54);
       }
       .dialog-actions {
         display: flex;
         flex-direction: row-reverse;
+
         flex-wrap: wrap;
       }
     }
