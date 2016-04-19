@@ -30,7 +30,7 @@ export default {
     },
     isModal: {
       type: Boolean,
-      required: true
+      default: false
     }
   },
   methods: {

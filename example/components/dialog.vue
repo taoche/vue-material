@@ -1,8 +1,19 @@
 <template>
   <div class="example-dialog">
     <h3>基础使用</h3>
-    <button @click="show =true">显示dialog</button>
-    <component-dialog v-if="show" :show.sync="show" class="component-dialog">
+    <button @click="show=true">显示dialog</button>
+
+    <button @click="showModal=true">显示带modal的dialog</button>
+
+    <component-dialog class="component-dialog" v-if="show" :show.sync="show">
+      <div slot="content">
+        <h3>你知道如何使用 Dialog 组件吗 ?</h3>
+        <p>基本的 Dialog 组件的使用</p>
+      </div>
+    </component-dialog>
+
+
+    <component-dialog class="component-dialog" v-if="showModal" :show.sync="showModal" :is-modal="true">
       <div slot="content">
         <h3>你知道如何使用 Dialog 组件吗 ?</h3>
         <p>基本的 Dialog 组件的使用</p>
@@ -20,6 +31,19 @@
       </component-dialog>
       </textarea>
     </example-code>
+
+    <example-code>
+      <textarea>
+       <button @click="showModal=true">显示带modal的dialog</button>
+
+      <component-dialog class="component-dialog" v-if="showModal" :show.sync="showModal" :is-modal="true">
+        <div slot="content">
+          <h3>你知道如何使用 Dialog 组件吗 ?</h3>
+          <p>基本的 Dialog 组件的使用</p>
+        </div>
+      </component-dialog>
+      </textarea>
+    </example-code>
   </div>
 </template>
 
@@ -31,7 +55,8 @@ export default {
   name: 'example-dialog',
   data () {
     return {
-      show: false
+      show: false,
+      showModal: false
     }
   },
   components: {
