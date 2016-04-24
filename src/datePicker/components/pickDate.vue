@@ -2,15 +2,15 @@
   <table class="select-date">
     <thead>
       <tr class="week-header">
-        <td v-for="header in weekHeader" track-by="$index">{{ header }}</td>
+        <td v-for="header of weekHeader" track-by="$index">{{ header }}</td>
       </tr>
     </thead>
 
     <tbody :class="{'date-left': dateTransitionType == 'left',
       'date-right': dateTransitionType == 'right'}">
 
-      <tr v-for="week in calendar" transition="date" track-by="$index">
-        <td v-for="day in week" track-by="$index" @click="selectDate(day.date)"
+      <tr v-for="week of calendar" transition="date" track-by="$index">
+        <td v-for="day of week" track-by="$index" @click="selectDate(day.date)"
           :class="{'today': day.is_today,
             'disabled': day.is_disabled,
             'selected': isSelected(day.date),

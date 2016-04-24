@@ -1,7 +1,7 @@
 <template>
   <div class="select-year">
     <ol>
-      <li v-for="year in yearArr" track-by="$index"
+      <li v-for="year of yearArr" track-by="$index"
         :class="{'active': year === selectedYear}"
         @click="changeActiveYear(year)">{{year}}</li>
     </ol>

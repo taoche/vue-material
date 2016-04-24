@@ -1,7 +1,7 @@
 <template>
   <div class="component-tabs">
     <ul class="tabs">
-      <li class="tabs-item" v-for="item in tabs" track-by="$index"
+      <li class="tabs-item" v-for="item of tabs" track-by="$index"
         @click="itemClickHandle($index)"
         :class="{'active': activeTabIndex === $index}">{{item}}</li>
     </ul>

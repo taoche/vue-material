@@ -6,8 +6,8 @@
     transformOrigin: origin}">
 
     <div class="menu-container" :style="{font: size}">
-      <ul v-for='menuData in menuList'>
-        <a v-for='item in menuData'
+      <ul v-for='menuData of menuList'>
+        <a v-for='item of menuData'
           class={{item.class}} href="{{{item.href}}}">
           <li>
             <p>

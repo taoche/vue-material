@@ -9,7 +9,7 @@
       </svg>
     </li>
 
-    <li v-for="item in pageArr" track-by="$index"
+    <li v-for="item of pageArr" track-by="$index"
       :class.stop="{active: item.isCurrent,
         'not-page': item.notPage}"
       @click="selectPage(item.page,$event)">

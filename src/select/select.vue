@@ -14,7 +14,7 @@
         :query-text.sync="queryText"
         @click.stop></coponent-search>
       <ul>
-        <li v-for="item in values | filterBy queryText" track-by="$index"
+        <li v-for="item of values | filterBy queryText" track-by="$index"
           :class="{'active': $index === activeIndex}"
           @click="select(item, $index)">{{item}}</li>
       </ul>

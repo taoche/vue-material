@@ -8,7 +8,7 @@
             checkbox
             <div><checkbox :is-checked.sync="checkedAllState"></checkbox></div>
           </th>
-          <th v-for="item in tableData[0] | tableDataKeys">
+          <th v-for="item of tableData[0] | tableDataKeys">
             {{item}}
             <div>{{item}}</div>
           </th>
@@ -16,11 +16,11 @@
       </thead>
 
       <tbody @mousewheel="tablesWheelHandle">
-        <tr v-for="(index, item) in tableData" track-by="$index"
+        <tr v-for="(index, item) of tableData" track-by="$index"
           @click="rowSelect($index)"
           :class="{active: item.checked}">
           <td v-if="hasCheckbox"><checkbox :is-checked="item.checked"></checkbox></td>
-          <td v-for="ele in item | tableDataValues">
+          <td v-for="ele of item | tableDataValues">
             {{ele}}
           </td>
         </tr>

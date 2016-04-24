@@ -3,7 +3,7 @@
   <div class="left" @click="clickLeftHandle" v-if="hasArrows"></div>
 
   <ul class="slider-box">
-    <li class="slider-item" v-for="item in collections" track-by="$index">
+    <li class="slider-item" v-for="item of collections" track-by="$index">
       <img :src="item">
     </li>
   </ul>
@@ -11,7 +11,7 @@
   <div class="right" @click="clickRightHandle" v-if="hasArrows"></div>
 
   <div class="slider-dots" v-if="hasDots">
-    <i v-for="item in collectionsLength"></i>
+    <i v-for="item of collectionsLength"></i>
   </div>
 </div>
 </template>

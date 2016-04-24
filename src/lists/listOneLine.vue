@@ -1,5 +1,5 @@
 <template>
-<li class="list-item" v-for="item in listData">
+<li class="list-item" v-for="item of listData">
   <span class="list-item-primary-content">
   <i class="icon-star"></i>
     {{item.title}}
