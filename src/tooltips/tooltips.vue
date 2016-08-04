@@ -1,8 +1,11 @@
 <template>
-  <div class="component-tooltip" v-el:tooltip v-if="show"
-    transition="tooltip"
-    :style="{left: positionData.left +'px',
-      top: positionData.top +'px'}">
+  <div class="component-tooltip"
+    v-if="show"
+    v-el:tooltip
+    :style="{
+      left: positionData.left +'px',
+      top: positionData.top +'px'}"
+    transition="tooltip">
     <div class="tooltip-container">{{text}}</div>
   </div>
 </template>

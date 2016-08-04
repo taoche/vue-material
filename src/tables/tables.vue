@@ -16,10 +16,13 @@
       </thead>
 
       <tbody @mousewheel="tablesWheelHandle">
-        <tr v-for="(index, item) of tableData" track-by="$index"
-          @click="rowSelect($index)"
-          :class="{active: item.checked}">
-          <td v-if="hasCheckbox"><checkbox :is-checked="item.checked"></checkbox></td>
+        <tr
+          v-for="(index, item) of tableData" track-by="$index"
+          :class="{active: item.checked}"
+          @click="rowSelect($index)">
+          <td v-if="hasCheckbox">
+            <checkbox :is-checked="item.checked"></checkbox>
+          </td>
           <td v-for="ele of item | tableDataValues">
             {{ele}}
           </td>
@@ -55,7 +58,6 @@ export default {
       })
     })
   },
-
   filters: {
     tableDataValues (value) {
       return Object.values(value).filter(item => typeof item !== 'boolean')
@@ -74,7 +76,6 @@ export default {
   ready () {
     this.domBody = document.querySelector('body')
   },
-
   methods: {
     rowSelect (index) {
       this.tableData[index].checked = !this.tableData[index].checked

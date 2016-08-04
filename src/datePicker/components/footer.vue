@@ -9,12 +9,16 @@
 <script>
 export default {
   name: 'date-pick-footer',
+  props: {
+    onCancel: Function,
+    onSure: Function
+  }
   methods: {
     datePickerHide () {
-      this.$dispatch('date-picker-hide')
+      this.onCancel && this.onCancel()
     },
     datePickersure () {
-      this.$dispatch('date-picker-sure')
+      this.onSure && this.onSure()
     }
   }
 }

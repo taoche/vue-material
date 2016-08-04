@@ -12,7 +12,6 @@
 export default {
   name: 'pick-year',
   props: ['yearArr', 'current', 'selectedDate'],
-
   computed: {
     selectedYear () {
       return this.selectedDate.getFullYear()
@@ -25,11 +24,9 @@ export default {
       })
     }
   },
-
   ready () {
     this.positionActive()
   },
-
   methods: {
     changeActiveYear (year) {
       this.current = this.selectedDate = new Date(this.selectedDate.setYear(year))

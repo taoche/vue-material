@@ -1,26 +1,31 @@
 <template>
-  <div class="menu-wrapper" v-el:menu v-if="show" transition="menu"
-    :style="{width: width,
+<div class="menu-wrapper"
+  v-if="show"
+  v-el:menu
+  :style="{width: width,
     left: positionData.left +'px',
     top: positionData.top +'px',
-    transformOrigin: origin}">
+    transformOrigin: origin}"
+  transition="menu">
 
-    <div class="menu-container" :style="{font: size}">
-      <ul v-for='menuData of menuList'>
-        <a v-for='item of menuData'
-          class={{item.class}} href="{{{item.href}}}">
-          <li>
-            <p>
-              <i v-if="item.leftIcon" class="{{item.leftIcon}}"></i>
-              {{item.name}}
-            </p>
-            <span v-if="item.rightText">{{item.rightText}}</span>
-            <i v-if="item.rightIcon" class="{{item.rightIcon}}"></i>
-          </li>
-        </a>
-      </ul>
-    </div>
+  <div class="menu-container" :style="{font: size}">
+    <ul v-for="menuData of menuList" track-by="$index">
+      <a
+        v-for="item of menuData" track-by="$index"
+        :class="[item.class]"
+        :href="item.href">
+        <li>
+          <p>
+            <i class="{{item.leftIcon}}" v-if="item.leftIcon"></i>
+            {{item.name}}
+          </p>
+          <span v-if="item.rightText">{{item.rightText}}</span>
+          <i class="{{item.rightIcon}}" v-if="item.rightIcon"></i>
+        </li>
+      </a>
+    </ul>
   </div>
+</div>
 </template>
 
 <script>
@@ -47,12 +52,8 @@ export default {
       type: Array,
       require: true
     },
-    width: {
-      type: String
-    },
-    size: {
-      type: String
-    }
+    width: String,
+    size: String
   },
   watch:{
     target(){

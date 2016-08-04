@@ -1,21 +1,22 @@
 <template>
 <div class="card-wrapper">
-  <div v-if="cardData.cardHead" class="card-head">
+  <div class="card-head" v-if="cardData.cardHead" >
     <h3>{{cardData.cardHead.title}}</h3>
     <p>{{cardData.cardHead.subTitle}}</p>
   </div>
 
-  <div v-if="cardData.cardMedia" class="card-media">
-    <img src="{{cardData.cardMedia.imgSrc}}" />
-    <div v-if="cardData.cardMedia.head" class="card-head">
+  <div class="card-media" v-if="cardData.cardMedia">
+    <img :src="cardData.cardMedia.imgSrc" />
+    <div class="card-head" v-if="cardData.cardMedia.head">
       <h3>{{cardData.cardMedia.title}}</h3>
       <p>{{cardData.cardMedia.subTitle}}</p>
     </div>
   </div>
 
-  <div v-if="cardData.cardText"  class="card-text">
+  <div class="card-text" v-if="cardData.cardText">
     <p>{{cardData.cardText.content}}</p>
   </div>
+
   <slot name="card-action"></slot>
 </div>
 </template>

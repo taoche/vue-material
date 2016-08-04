@@ -13,7 +13,7 @@
 export default {
   name: 'component-avatar',
   props: {
-    src: null,
+    src: String,
     letter: {
       default: '未'
     }

@@ -1,9 +1,10 @@
 <template>
   <div class="component-tabs">
     <ul class="tabs">
-      <li class="tabs-item" v-for="item of tabs" track-by="$index"
-        @click="itemClickHandle($index)"
-        :class="{'active': activeTabIndex === $index}">{{item}}</li>
+      <li class="tabs-item"
+        v-for="item of tabs" track-by="$index"
+        :class="{'active': activeTabIndex === $index}"
+        @click="itemClickHandle($index)">{{item}}</li>
     </ul>
     <i class="indicator" :style="{'width': widthPercentage, 'left': leftPercentage}"></i>
   </div>

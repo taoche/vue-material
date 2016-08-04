@@ -1,5 +1,8 @@
 <template>
-<div class="component-dialog" :class="{'is-modal': isModal}" transition="dialog" @click="dialogMaskHandle">
+<div class="component-dialog"
+  :class="{'is-modal': isModal}"
+  @click="dialogMaskHandle"
+  transition="dialog">
   <div class="dialog-wrap">
     <div class="dialog-container">
       <div class="dialog-content">
@@ -31,24 +34,21 @@ export default {
     isModal: {
       type: Boolean,
       default: false
-    }
+    },
+    onSure: Function,
+    onCancel: Function
   },
   methods: {
-    hiddenDialog () {
-      this.show = false
-    },
     dialogMaskHandle (event) {
       if (event.target.classList.contains('dialog-wrap')) {
-        this.hiddenDialog()
+        this.$destroy()
       }
     },
     cancelHandle () {
-      this.$dispatch('component-dialog-cancel')
-      this.hiddenDialog()
+      this.onCancel && this.onCancel()
     },
     sureHandle () {
-      this.$dispatch('component-dialog-sure')
-      this.hiddenDialog()
+      this.onSure && this.onSure()
     }
   },
   components: {

@@ -10,41 +10,42 @@
       'date-right': dateTransitionType == 'right'}">
 
       <tr v-for="week of calendar" transition="date" track-by="$index">
-        <td v-for="day of week" track-by="$index" @click="selectDate(day.date)"
+        <td
+          v-for="day of week" track-by="$index"
           :class="{'today': day.is_today,
             'disabled': day.is_disabled,
             'selected': isSelected(day.date),
-            'not-current-month': !day.this_month}">{{ day.day }}</td>
+            'not-current-month': !day.this_month}"
+          @click="selectDate(day.date)">{{ day.day }}</td>
       </tr>
     </tbody>
-
   </table>
 </template>
 
 <script>
+const WEEK_NUMBER  = [0, 1, 2, 3, 4, 5, 6]
+const WEEK_ABBREVIATION = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+
 export default {
   name: 'pick-date',
   props: ['selectedDate', 'minDate', 'maxDate', 'current'],
   data () {
     return {
       dateTransitionType: false,
-      weekMask: [0, 1, 2, 3, 4, 5, 6],
-      weekHeader: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+      weekMask: WEEK_NUMBER,
+      weekHeader: WEEK_ABBREVIATION
     }
   },
-
   watch: {
     current (newVal, oldVal) {
       this.dateTransitionType = newVal > oldVal ? 'right' : 'left'
     }
   },
-
   computed: {
     calendar () {
       return this.updateCalendar()
     }
   },
-
   methods: {
     // [生成 7*6 日期信息]
     updateCalendar () {
@@ -81,14 +82,12 @@ export default {
 
       return calendar
     },
-
     selectDate (date) {
       if (this.checkIsEnabled(date)) {
         this.dateTransitionType = false
         this.selectedDate = date
       }
     },
-
     checkIsEnabled (date) {
       let minDate = new Date(this.minDate)
       let maxDate = new Date(this.maxDate)
@@ -97,11 +96,9 @@ export default {
         return date >= minDate && date <= maxDate
       })()
     },
-
     isSelected (date) {
       return date.toDateString() === this.selectedDate.toDateString()
     },
-
     firstDayOfMonth (date) {
       return new Date(date.getFullYear(), date.getMonth(), 1)
     }

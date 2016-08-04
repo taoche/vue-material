@@ -2,7 +2,7 @@
 <div class="date-picker" v-if="show" transition="date">
 
   <div class="date-picker-wrapper" :style="{top: containerTop}">
-    <div class="date-picker-container"  v-el:date-container>
+    <div class="date-picker-container" v-el:date-container>
 
       <!-- DatePick header -->
       <date-header
@@ -39,25 +39,29 @@
 </template>
 
 <script>
+const DEFAULT_DATE_MIN = '1900-01-01'
+const DEFAULT_DATE_MAX = '2115-01-01'
+const NOW = new Date()
+
 export default {
   name: 'component-datePicker',
   props: {
     selectedDateProps: {
-      type: Date | String,
+      type: [Date, String],
       default () {
-        return new Date()
+        return NOW
       }
     },
     minDate: {
       type: String,
       default () {
-        return '1900-01-01'
+        return DEFAULT_DATE_MIN
       }
     },
     maxDate: {
       type: String,
       default () {
-        return '2115-01-01'
+        return DEFAULT_DATE_MAX
       }
     },
     show: {
@@ -65,11 +69,10 @@ export default {
       required: true
     }
   },
-
   data () {
     return {
       selectedDate: '',
-      currentDate: new Date(),
+      currentDate: NOW,
       toSelectYear: false,
       containerTop: 0
     }
@@ -142,16 +145,12 @@ export default {
 
       return yearArr
     },
-
     dateFormat (date) {
       return new Date(date).toLocaleDateString().split('/').map(item => {
-        if (item < 10) {
-          item = '0' + item
-        }
+        if (item < 10) item = `0${item}`
         return item
       }).join('-')
     },
-
     getMonthName (month) {
       var monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December'

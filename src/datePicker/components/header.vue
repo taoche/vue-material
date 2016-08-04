@@ -1,33 +1,37 @@
 <template>
 <header class="date-header">
   <div class="date-year">
-    <h4 @click="changeYearSelect" :class="{
-      'active':changeSelectType,
-      'ani-up': turnType==='up' && modifyYear,
-      'ani-down': turnType==='down' && modifyYear}">{{selectedInfo.year}}</h4>
+    <h4
+      :class="{
+        'active':changeSelectType,
+        'ani-up': turnType==='up' && modifyYear,
+        'ani-down': turnType==='down' && modifyYear}"
+      @click="changeYearSelect">{{selectedInfo.year}}</h4>
   </div>
 
   <div class="date">
-    <h2 @click="changeMonthSelect" :class="{
+    <h2
+      :class="{
         'active': !changeSelectType,
         'ani-up': turnType==='up',
-        'ani-down': turnType==='down'}">{{selectedInfo.day}}, {{selectedInfo.month}} {{selectedInfo.date}}</h2>
+        'ani-down': turnType==='down'}"
+      @click="changeMonthSelect">{{selectedInfo.day}}, {{selectedInfo.month}} {{selectedInfo.date}}</h2>
   </div>
-
 </header>
 </template>
 
 <script>
 export default {
   name: 'date-pick-header',
-  props: ['changeSelectType', 'selectedInfo'],
-
+  props: {
+    changeSelectType: Boolean,
+    selectedInfo: Object
+  },
   data () {
     return {
       turnType: null
     }
   },
-
   watch: {
     selectedInfo (newVal, oldVal) {
       let newValDate = [newVal.year, newVal.month, newVal.date].join('')
@@ -42,20 +46,16 @@ export default {
       }
     }
   },
-
   ready () {
     this.animationEndFn()
   },
-
   methods: {
     changeYearSelect () {
       this.changeSelectType = true
     },
-
     changeMonthSelect () {
       this.changeSelectType = false
     },
-
     animationEndFn () {
       let $target = this.$el.querySelector('h2')
 

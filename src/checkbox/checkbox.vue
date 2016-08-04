@@ -64,6 +64,7 @@ export default {
     border-radius: 50%;
     background: rgba(#000, .5);
   }
+
   @keyframes checkbox-ripple {
     from {
       transform: scale(0);

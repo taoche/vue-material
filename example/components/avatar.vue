@@ -21,6 +21,7 @@
 <script>
 import avatar from 'src/avatar/avatar'
 import code from '../example-code'
+
 export default {
   name: 'example-avatar',
   data () {

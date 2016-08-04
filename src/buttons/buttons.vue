@@ -1,7 +1,10 @@
 <template>
-<button class="component-button btn btn--{{theme}} {{state}}" :type="type"
-  :disabled="isDisabled" @click.stop="clickHandle" @mousedown="mousedownHandle">
-  <slot name="content"><slot>
+<button class="component-button btn btn--{{theme}} {{state}}"
+  :type="type"
+  :disabled="isDisabled"
+  @click.stop="clickHandle"
+  @mousedown="mousedownHandle">
+    <slot name="content"><slot>
 </button>
 </template>
 
@@ -23,10 +26,7 @@ export default {
       type: String,
       default: 'button'
     },
-    eventName: {
-      type: String,
-      default: 'btn-click'
-    }
+    onClick: Function
   },
   computed: {
     isDisabled () {
@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     clickHandle () {
-      this.$dispatch(this.eventName)
+      this.onClick && this.onClick()
     },
     mousedownHandle (event) {
       let x = event.pageX - event.currentTarget.offsetLeft
