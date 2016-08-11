@@ -1,8 +1,12 @@
 <template>
-<div class="component-snackbar shadow--2dp" transition="snackbar"
-  @mouseenter="mouseenterHandle" @mouseleave="mouseleaveHandle">
+<div class="component-snackbar shadow--2dp"
+  @mouseenter="mouseenterHandle"
+  @mouseleave="mouseleaveHandle"
+  transition="snackbar">
   <span class="message">{{msg}}</span>
-  <span class="action" v-if="actionText" @click="snackbarActionHandle">{{actionText}}</span>
+  <span class="action"
+    v-if="actionText"
+    @click="snackbarActionHandle">{{actionText}}</span>
 </div>
 </template>
 
@@ -18,7 +22,8 @@ export default {
       type: String,
       required: true
     },
-    actionText: null
+    actionText: null，
+    onClick: Function
   },
   data () {
     return {
@@ -36,7 +41,7 @@ export default {
       this.setTimeoutHideen()
     },
     snackbarActionHandle () {
-      this.$dispatch('component-snackbar-action')
+      this.onClick && this.onClick()
       this.show = false
     },
     setTimeoutHideen () {

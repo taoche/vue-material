@@ -6,7 +6,7 @@
   </div>
 
   <div class="card-media" v-if="cardData.cardMedia">
-    <img :src="cardData.cardMedia.imgSrc" />
+    <img :src="cardData.cardMedia.imgSrc">
     <div class="card-head" v-if="cardData.cardMedia.head">
       <h3>{{cardData.cardMedia.title}}</h3>
       <p>{{cardData.cardMedia.subTitle}}</p>

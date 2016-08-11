@@ -3,7 +3,6 @@
   @click="changeState"
   :class="{active: activeName === name,
     disabled: state === 'disabled'}">
-
   <input class="radio-tag" type="radio">
   <div class="radio-bd">
     <span class="radio-indicator"></span>
@@ -23,17 +22,14 @@ export default {
     state: {
       type: String
     },
-    eventName: {
-      type: String,
-      default: 'radio-click'
-    }
+    onChange: Function
   },
   methods: {
     changeState () {
       if (this.state === 'disabled') return false
 
       this.activeName = this.name
-      this.$dispatch(this.eventName, this.name)
+      this.onChange && this.onChange(this.name)
     }
   }
 }

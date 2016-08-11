@@ -45,7 +45,8 @@ export default {
     valve: {
       type: Number,
       default: 5
-    }
+    },
+    onChange: Function
   },
   computed: {
     pageArr () {
@@ -120,7 +121,7 @@ export default {
 
       this.currentPage = index
 
-      this.$dispatch('pagination-change', index)
+      this.onChange && this.onChange(index)
     },
 
     prevPage (event) {

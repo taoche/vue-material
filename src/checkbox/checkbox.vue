@@ -22,14 +22,15 @@ export default {
     isDisabled: {
       type: Boolean,
       default: false
-    }
+    },
+    onChange: Function
   },
   methods: {
     changeState (event) {
       if (this.isDisabled) return false
 
       this.isChecked = !this.isChecked
-      this.$dispatch('checkbox-state-change', event, this.isChecked)
+      this.onChange && this.onChange(this.isChecked)
     },
     mousedownHandle (event) {
       appendRipple(this.$el)

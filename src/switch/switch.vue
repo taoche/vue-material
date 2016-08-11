@@ -18,14 +18,16 @@ export default {
     isDisabled: {
       type: Boolean,
       default: false
-    }
+    },
+    onChange: Function
   },
   methods: {
     toggleSwitchHandle () {
       if (this.isDisabled) return false
 
       this.isCheck = !this.isCheck
-      this.$dispatch('component-switch-toggle', this.isCheck)
+
+      this.onChange && this.onChange (this.isCheck)
     }
   }
 }

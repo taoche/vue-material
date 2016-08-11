@@ -34,18 +34,19 @@ export default {
     values: {
       required: true
     },
-    selected: null
-  },
-  computed: {
-    filteredValues () {
-      return this.$options.filters.filterBy(this.values, this.queryText)
-    }
+    selected: String,
+    onSelect: Function
   },
   data () {
     return {
       activeIndex: 0,
       showList: false,
       queryText: ''
+    }
+  },
+  computed: {
+    filteredValues () {
+      return this.$options.filters.filterBy(this.values, this.queryText)
     }
   },
   transitions: {
@@ -70,9 +71,10 @@ export default {
       this.activeIndex = this.findActiveIndex()
       this.showList = false
       this.queryText = ''
+
+      this.onSelect && this.onSelect(this.selected)
     },
     showDropdownList () {
-      this.$dispatch('component-select-show-list', this.showList)
       this.showList = !this.showList
     },
     computedHeight (el) {
@@ -105,6 +107,8 @@ export default {
           this.activeIndex = this.findActiveIndex()
           this.showList = false
           this.queryText = ''
+
+          this.onSelect && this.onSelect(this.selected)
           break
         default:
           break

@@ -1,6 +1,8 @@
 <template>
 <div class="component-slider">
-  <div class="left" @click="clickLeftHandle" v-if="hasArrows"></div>
+  <div class="left"
+    v-if="hasArrows"
+    @click="clickLeftHandle" ></div>
 
   <ul class="slider-box">
     <li class="slider-item" v-for="item of collections" track-by="$index">
@@ -8,10 +10,12 @@
     </li>
   </ul>
 
-  <div class="right" @click="clickRightHandle" v-if="hasArrows"></div>
+  <div class="right"
+    v-if="hasArrows"
+    @click="clickRightHandle"></div>
 
   <div class="slider-dots" v-if="hasDots">
-    <i v-for="item of collectionsLength"></i>
+    <i v-for="item of collectionsLength" track-by="$index"></i>
   </div>
 </div>
 </template>
@@ -35,7 +39,8 @@ export default {
     hasArrows: {
       type: Boolean,
       default: true
-    }
+    },
+    onChange: Function
   },
   data () {
     currentIndex: 0
@@ -45,12 +50,19 @@ export default {
       return this.collections.length
     }
   },
+  events: {
+    handleChang () {
+      this.onChange && this.onChange(this.currentIndex)
+    }
+  },
   methods: {
     clickLeftHandle () {
       this.currentIndex = Math.max(currentIndex - 1, 0)
+      this.$emit('handleChang')
     },
     clickRightHandle () {
       this.currentIndex = Math.min(currentIndex + 1, collectionsLength)
+      this.$emit('handleChang')
     }
   }
 }

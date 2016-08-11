@@ -6,7 +6,8 @@
         :class="{'active': activeTabIndex === $index}"
         @click="itemClickHandle($index)">{{item}}</li>
     </ul>
-    <i class="indicator" :style="{'width': widthPercentage, 'left': leftPercentage}"></i>
+    <i class="indicator"
+      :style="{'width': widthPercentage, 'left': leftPercentage}"></i>
   </div>
 </template>
 
@@ -21,7 +22,8 @@ export default {
     activeTabIndex: {
       type: Number,
       default: 0
-    }
+    },
+    onChange: Function
   },
   computed: {
     widthPercentage () {
@@ -35,7 +37,7 @@ export default {
     itemClickHandle (index) {
       this.activeTabIndex = index
 
-      this.$dispatch('component-tabs-changed', index)
+      this.onChange && this.onChange(this.activeTabIndex)
     }
   }
 }
