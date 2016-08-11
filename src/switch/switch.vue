@@ -27,7 +27,7 @@ export default {
 
       this.isCheck = !this.isCheck
 
-      this.onChange && this.onChange (this.isCheck)
+      this.onChange && this.onChange(this.isCheck)
     }
   }
 }

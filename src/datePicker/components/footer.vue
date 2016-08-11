@@ -12,7 +12,7 @@ export default {
   props: {
     onCancel: Function,
     onSure: Function
-  }
+  },
   methods: {
     datePickerHide () {
       this.onCancel && this.onCancel()

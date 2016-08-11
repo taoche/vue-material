@@ -22,7 +22,7 @@ export default {
       type: String,
       required: true
     },
-    actionText: null，
+    actionText: null,
     onClick: Function
   },
   data () {

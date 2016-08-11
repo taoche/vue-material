@@ -1,7 +1,8 @@
 <template>
 <div class="component-checkbox checkbox"
+  v-ripple.static
   :class="{active: isChecked, disabled: isDisabled}"
-  @click="changeState" @mousedown="mousedownHandle">
+  @click="changeState">
   <input class="checkbox-tag" type="checkbox">
   <div class="checkbox-bd">
     <span class="checkbox-indicator"></span>
@@ -10,7 +11,7 @@
 </template>
 
 <script>
-import appendRipple from 'utils/appendRipple'
+import ripple from 'directives/ripple'
 
 export default {
   name: 'component-checkbox',
@@ -25,15 +26,15 @@ export default {
     },
     onChange: Function
   },
+  directives: {
+    ripple: ripple
+  },
   methods: {
     changeState (event) {
       if (this.isDisabled) return false
 
       this.isChecked = !this.isChecked
       this.onChange && this.onChange(this.isChecked)
-    },
-    mousedownHandle (event) {
-      appendRipple(this.$el)
     }
   }
 }

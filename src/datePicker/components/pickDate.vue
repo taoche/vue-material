@@ -23,7 +23,7 @@
 </template>
 
 <script>
-const WEEK_NUMBER  = [0, 1, 2, 3, 4, 5, 6]
+const WEEK_NUMBER = [0, 1, 2, 3, 4, 5, 6]
 const WEEK_ABBREVIATION = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
 
 export default {

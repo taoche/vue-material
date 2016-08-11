@@ -1,15 +1,15 @@
 <template>
 <button class="component-button btn btn--{{theme}} {{state}}"
+  v-ripple
   :type="type"
   :disabled="isDisabled"
-  @click.stop="clickHandle"
-  @mousedown="mousedownHandle">
+  @click.stop="clickHandle">
     <slot name="content"><slot>
 </button>
 </template>
 
 <script>
-import appendRipple from 'utils/appendRipple'
+import ripple from 'directives/ripple'
 
 export default {
   name: 'component-button',
@@ -33,15 +33,12 @@ export default {
       return this.state === 'disabled'
     }
   },
+  directives: {
+    ripple: ripple
+  },
   methods: {
     clickHandle () {
       this.onClick && this.onClick()
-    },
-    mousedownHandle (event) {
-      let x = event.pageX - event.currentTarget.offsetLeft
-      let y = event.pageY - event.currentTarget.offsetTop
-
-      appendRipple(this.$el, x, y)
     }
   }
 }
