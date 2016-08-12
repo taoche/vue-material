@@ -1,5 +1,6 @@
 <template>
-<div class="radio"
+<div class="component-radio radio"
+  v-ripple.static
   @click="changeState"
   :class="{active: activeName === name,
     disabled: state === 'disabled'}">
@@ -11,6 +12,8 @@
 </template>
 
 <script>
+import ripple from 'directives/ripple'
+
 export default {
   props: {
     name: {
@@ -24,6 +27,9 @@ export default {
     },
     onChange: Function
   },
+  directives: {
+    ripple: ripple
+  },
   methods: {
     changeState () {
       if (this.state === 'disabled') return false
@@ -34,3 +40,34 @@ export default {
   }
 }
 </script>
+
+
+<style lang="scss">
+.component-radio {
+  .ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 4px;
+    height: 4px;
+    margin: -2px;
+    transform: scale(12);
+    animation: checkbox-ripple .8s;
+    opacity: 0;
+    border-radius: 50%;
+    background: rgba(#000, .5);
+  }
+
+  @keyframes checkbox-ripple {
+    from {
+      transform: scale(0);
+      opacity: .5;
+    }
+    to {
+      transform: scale(12);
+      opacity: 0;
+    }
+  }
+}
+</style>

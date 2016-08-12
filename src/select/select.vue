@@ -9,8 +9,12 @@
     </i>
   </div>
   <slot name="selectList">
-    <div class="list-box shadow--2dp" v-show="showList" transition="select-list" v-el:list-box>
-      <coponent-search class="select-search-bar" v-if="values.length > 10"
+    <div class="list-box shadow--2dp"
+      v-show="showList"
+      transition="select-list">
+      <coponent-search class="select-search-bar"
+        v-if="values.length > 10"
+        :on-key-down="onSearchKeyDown"
         :query-text.sync="queryText"
         @click.stop></coponent-search>
       <ul>
@@ -49,18 +53,13 @@ export default {
       return this.$options.filters.filterBy(this.values, this.queryText)
     }
   },
-  transitions: {
-    'select-list': {
-      enter (el) {
-        el.style.height = Math.min(parseInt(window.getComputedStyle(el)['max-height'], 10), parseInt(this.computedHeight(el), 10)) + 'px'
-      },
-      beforeLeave (el) {
-        el.style.height = 0
-      }
-    }
-  },
   created () {
     this.activeIndex = this.findActiveIndex()
+  },
+  ready () {
+    document.addEventListener('click', (evnet) => {
+      this.showList = false
+    })
   },
   methods: {
     findActiveIndex () {
@@ -77,24 +76,9 @@ export default {
     showDropdownList () {
       this.showList = !this.showList
     },
-    computedHeight (el) {
-      let height = 0
-      Array.from(el.childNodes).forEach((child) => {
-        if (child.nodeType === 1) {
-          let _style = window.getComputedStyle(child)
-          height += child.clientHeight +
-            (parseInt(_style.borderTopWidth, 10) || 0) +
-            (parseInt(_style.borderBottomWidth, 10) || 0)
-        }
-      })
-      return height + 'px'
-    }
-  },
-  events: {
-    'search-keyup' () {
-      this.$els.listBox.style.height = this.computedHeight(this.$els.listBox)
-    },
-    'search-keydown' (query, keyCode) {
+    onSearchKeyDown (query, event) {
+      let keyCode = event.keyCode
+
       switch (keyCode) {
         case KEY_PRESS_UP:
           this.activeIndex = Math.max(this.activeIndex - 1, 0)
@@ -114,11 +98,6 @@ export default {
           break
       }
     }
-  },
-  ready () {
-    document.addEventListener('click', (evnet) => {
-      this.showList = false
-    })
   },
   components: {
     'coponent-search': require('../search/search')
@@ -174,8 +153,6 @@ export default {
     overflow: hidden;
     overflow-y: auto;
     width: 180px;
-    max-height: 300px;
-    transition: all .3s ease-in-out;
     border-radius: 2px;
     background-color: #fff;
     .select-search-bar {
@@ -204,11 +181,12 @@ export default {
       }
     }
     &.select-list-transition {
-      transition: all .3s ease-in-out;
+      max-height: 300px;
+      transition: all .5s cubic-bezier(.55, 0, .1, 1);
     }
     &.select-list-enter,
     &.select-list-leave {
-      height: 0;
+      max-height: 0;
       opacity: 0;
     }
   }

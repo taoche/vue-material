@@ -59,6 +59,7 @@ export default {
   display: flex;
   width: 100%;
   height: 100%;
+  max-height: 30px;
   padding: 10px 0;
   border: 1px solid rgba(0,0,0,.16);
   border-radius: 2px;

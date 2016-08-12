@@ -60,7 +60,7 @@ export default {
     width: 4px;
     height: 4px;
     margin: -2px;
-    transform: scale(13);
+    transform: scale(12);
     animation: checkbox-ripple .8s;
     opacity: 0;
     border-radius: 50%;
@@ -73,7 +73,7 @@ export default {
       opacity: .5;
     }
     to {
-      transform: scale(13);
+      transform: scale(12);
       opacity: 0;
     }
   }
