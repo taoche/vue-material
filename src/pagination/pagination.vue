@@ -2,7 +2,8 @@
 <div class="component-pagination" v-if="pageLength > 1">
   <ul class="pagination">
 
-    <li class="prev" :class="{disabled:currentPage === 1}"
+    <li class="prev"
+      :class="{disabled:currentPage === 1}"
       @click.stop="prevPage">
       <svg width="8px" height="15px" viewBox="0 0 50 80" xml:space="preserve">
         <polyline fill="none" stroke="#4e647b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375"/>
@@ -16,7 +17,8 @@
       <a href="javascript:void(0)">{{item.page}}</a>
     </li>
 
-    <li class="next" :class="{disabled:currentPage  === pageLength}"
+    <li class="next"
+      :class="{disabled:currentPage  === pageLength}"
       @click.stop="nextPage">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="8px" height="15px" viewBox="0 0 50 80" xml:space="preserve">
         <polyline fill="none" stroke="#4e647b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8"/>
@@ -77,7 +79,6 @@ export default {
             notPage: true
           })
 
-          // 倒数3个数
           for (let i = 2, len = this.currentPage; i >= 0; i--) {
             pageArr.push({
               page: len - i,
@@ -113,11 +114,9 @@ export default {
       return pageArr
     }
   },
-
   methods: {
     selectPage (index, event) {
-      if (event.target.parentNode.classList.contains('not-page') ||
-      this.currentPage === index) return false
+      if (event.target.parentNode.classList.contains('not-page') || this.currentPage === index) return false
 
       this.currentPage = index
 

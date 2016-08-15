@@ -1,11 +1,11 @@
 import parseHtml from 'utils/parseHtml'
 
+const ripple = (x, y) => {
+  return parseHtml(`<span class="ripple" style="left:${x - 2}px;top:${y - 2}px"></span>`)
+}
+
 export default {
   bind () {
-    const ripple = (x, y) => {
-      return parseHtml(`<span class="ripple" style="left:${x - 2}px;top:${y - 2}px"></span>`)
-    }
-
     this.mousedownHandle = (event) => {
       let x = '50%'
       let y = '50%'
@@ -20,7 +20,7 @@ export default {
       this.el.appendChild(domRipple)
 
       domRipple.addEventListener('animationend', () => {
-        domRipple.parentNode.removeChild(domRipple)
+        this.el.removeChild(domRipple)
       })
     }
 

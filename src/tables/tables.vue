@@ -6,7 +6,9 @@
         <tr>
           <th v-if="hasCheckbox">
             checkbox
-            <div><checkbox :is-checked.sync="checkedAllState"></checkbox></div>
+            <div>
+              <component-checkbox :is-checked.sync="checkedAllState"></component-checkbox>
+            </div>
           </th>
           <th v-for="item of tableData[0] | tableDataKeys">
             {{item}}
@@ -17,13 +19,13 @@
 
       <tbody @mousewheel="tablesWheelHandle">
         <tr
-          v-for="(index, item) of tableData" track-by="$index"
+          v-for="item of tableData" track-by="$index"
           :class="{active: item.checked}"
           @click="rowSelect($index)">
           <td v-if="hasCheckbox">
-            <checkbox :is-checked="item.checked"></checkbox>
+            <component-checkbox :is-checked="item.checked"></component-checkbox>
           </td>
-          <td v-for="ele of item | tableDataValues">
+          <td v-for="ele of item | tableDataValues" track-by="$index">
             {{ele}}
           </td>
         </tr>
@@ -34,8 +36,13 @@
 </template>
 
 <script>
+import ComponentCheckbox from '../checkbox/checkbox'
+
 export default {
   name: 'component-table',
+  components: {
+    'component-checkbox': ComponentCheckbox
+  },
   props: {
     tableData: {
       type: Array,
@@ -86,9 +93,6 @@ export default {
     tablesLeaveHandle () {
       this.domBody.style.overflow = 'inherit'
     }
-  },
-  components: {
-    checkbox: require('../checkbox/checkbox')
   }
 }
 </script>

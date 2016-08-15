@@ -24,8 +24,13 @@
 </template>
 
 <script>
+import ComponentButton from '../buttons/buttons'
+
 export default {
   name: 'component-dialog',
+  components: {
+    'component-button': ComponentButton
+  },
   props: {
     show: {
       type: Boolean,
@@ -50,9 +55,6 @@ export default {
     sureHandle () {
       this.onSure && this.onSure()
     }
-  },
-  components: {
-    'component-button': require('../buttons/buttons')
   }
 }
 </script>

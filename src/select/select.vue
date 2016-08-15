@@ -28,12 +28,16 @@
 </template>
 
 <script>
+import CoponentSearch from '../search/search'
 const KEY_PRESS_UP = 38
 const KEY_PRESS_DOWN = 40
 const KEY_PRESS_ENTER = 13
 
 export default {
   name: 'component-select',
+  components: {
+    'coponent-search': CoponentSearch
+  },
   props: {
     values: {
       required: true
@@ -98,9 +102,6 @@ export default {
           break
       }
     }
-  },
-  components: {
-    'coponent-search': require('../search/search')
   }
 }
 </script>

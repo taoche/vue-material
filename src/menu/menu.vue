@@ -66,15 +66,14 @@ export default {
   },
   methods: {
     computedPositon(target){
-
-      let _tPosition = target.getBoundingClientRect(),
-          _tWidth = _tPosition.width,
-          _tHeight = _tPosition.height,
-          _tLeft = _tPosition.left,
-          _tTop = _tPosition.top,
-          domMenu = this.$els.menu,
-          _sWidth = domMenu.offsetWidth,
-          _sHeight = domMenu.offsetHeight;
+      let _tPosition = target.getBoundingClientRect()
+      let _tWidth = _tPosition.width
+      let _tHeight = _tPosition.height
+      let _tLeft = _tPosition.left
+      let _tTop = _tPosition.top
+      let _sWidth = domMenu.offsetWidth
+      let _sHeight = domMenu.offsetHeight
+      let domMenu = this.$els.menu
 
       let setDirection = {
         leftBottom:() => {
@@ -82,10 +81,8 @@ export default {
           return {
             left: _tLeft,
             top: _tTop + _tHeight
-
           }
         },
-
         rightBottom:() => {
           this.origin = 'right top';
           return {
@@ -93,7 +90,6 @@ export default {
             top: _tTop + _tHeight
           }
         },
-
         leftTop:() => {
           this.origin = 'left bottom';
           return {
@@ -101,7 +97,6 @@ export default {
             top: _tTop - _sHeight
           }
         },
-
         rightTop:() => {
           this.origin = 'right bottom';
           return {
@@ -116,6 +111,7 @@ export default {
   }
 }
 </script>
+
 <style lang="scss">
 .menu-wrapper {
   position: absolute;

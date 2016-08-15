@@ -6,7 +6,9 @@
       left: positionData.left +'px',
       top: positionData.top +'px'}"
     transition="tooltip">
-    <div class="tooltip-container">{{text}}</div>
+    <span class="tooltip-text">
+      {{text}}
+    </span>
   </div>
 </template>
 
@@ -100,20 +102,19 @@ export default {
   position: absolute;
   transition: transform .3s ease;
 
-  .tooltip-container {
-    font-size: 10px;
-    line-height: 22px;
+  .tooltip-text {
+    font-size: 12px;
     overflow: hidden;
-    height: 22px;
-    padding: 0 8px;
+    padding: 6px 8px;
     opacity: .9;
     color: #fff;
     border-radius: 2px;
     background: #747474;
   }
+
   &.tooltip-enter,
   &.tooltip-leave {
-    transform: scale(1.1);
+    transform: perspective(1px) scale(1.1);
     opacity: 0;
   }
 }

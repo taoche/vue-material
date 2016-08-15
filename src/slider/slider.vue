@@ -43,7 +43,9 @@ export default {
     onChange: Function
   },
   data () {
-    currentIndex: 0
+    return {
+      currentIndex: 0
+    }
   },
   computed: {
     collectionsLength () {

@@ -1,4 +1,4 @@
-a<template>
+<template>
   <div class="example-tooltips">
     <h3>基础使用</h3>
     <a href="javascript:void(0)" v-for="n in 4"
@@ -6,6 +6,8 @@ a<template>
       @mouseout="mouseoutHandle($index, $event)">target</a>
 
     <component-tooltips :direction="direction" text="example" :show="show" :target="target"></component-tooltips>
+
+    <a href="javascript:void(0)" style="position: relative" v-tooltip:left="测试">测试</a>
 
     <example-code>
       <textarea>
@@ -24,6 +26,7 @@ a<template>
 
 <script>
 import tooltips from 'src/tooltips/tooltips'
+import tooltip from 'directives/tooltips'
 import code from '../example-code'
 
 export default {
@@ -34,6 +37,9 @@ export default {
       show: false,
       direction: 'bottom'
     }
+  },
+  directives: {
+    tooltip: tooltip
   },
   methods: {
     mouseoverHandle ($index, event) {
