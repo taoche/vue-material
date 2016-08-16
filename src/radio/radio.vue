@@ -53,13 +53,13 @@ export default {
     height: 4px;
     margin: -2px;
     transform: scale(12);
-    animation: checkbox-ripple .8s;
+    animation: radio-ripple .8s;
     opacity: 0;
     border-radius: 50%;
     background: rgba(#000, .5);
   }
 
-  @keyframes checkbox-ripple {
+  @keyframes radio-ripple {
     from {
       transform: scale(0);
       opacity: .5;

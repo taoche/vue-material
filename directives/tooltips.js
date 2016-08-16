@@ -1,4 +1,5 @@
 import parseHtml from 'utils/parseHtml'
+import handleEvent from 'utils/handleEvent'
 
 const templateTooltip = (text, direction) => {
   return parseHtml(`<div class="component-tooltip" style="top: ${direction.x}px; left: ${direction.y}px">
@@ -29,19 +30,26 @@ export default {
 
     const $tooltip = templateTooltip(this.expression, direction[this.arg] || 'bottom')
 
-    this.enterHanlder = () => {
+    const enterHanlder = () => {
       this.el.appendChild($tooltip)
     }
 
-    this.leaveHanlder = () => {
+    const leaveHanlder = () => {
       this.el.removeChild($tooltip)
     }
 
-    this.el.addEventListener('mouseenter', this.enterHanlder)
-    this.el.addEventListener('mouseleave', this.leaveHanlder)
+    this.enterHanlder = handleEvent('mouseenter', {
+      element: this.el,
+      callback: enterHanlder
+    })
+
+    this.leaveHanlder = handleEvent('mouseleave', {
+      element: this.el,
+      callback: leaveHanlder
+    })
   },
   unbind () {
-    this.el.removeEventListener('mouseenter', this.enterHanlder)
-    this.el.removeEventListener('mouseleave', this.leaveHanlder)
+    this.enterHanlder.destroy()
+    this.leaveHanlder.destroy()
   }
 }

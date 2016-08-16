@@ -48,21 +48,21 @@ export default {
     width: 4px;
     height: 4px;
     transform: scale(15);
-    animation: button-ripple 1.4s;
+    animation: switch-ripple 1.4s;
     opacity: 0;
     border-radius: 50%;
     background: rgba(#000, .4);
   }
-}
 
-@keyframes button-ripple {
-  from {
-    transform: scale(0);
-    opacity: .5;
-  }
-  to {
-    transform: scale(15);
-    opacity: 0;
+  @keyframes switch-ripple {
+    from {
+      transform: scale(0);
+      opacity: .5;
+    }
+    to {
+      transform: scale(15);
+      opacity: 0;
+    }
   }
 }
 </style>

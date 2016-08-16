@@ -1,7 +1,7 @@
 const handleEvent = (eventName, { element, callback, useCapture = false } = {}, thisArg) => {
   const $element = element || document.documentElement
 
-  const handler => (event) {
+  const handler = (event) => {
     if (typeof callback === 'function') {
       callback.call(thisArg, event)
     }
