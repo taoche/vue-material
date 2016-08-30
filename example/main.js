@@ -6,7 +6,7 @@ import { configRouter } from './route-config'
 import App from './App'
 
 // styles
-import 'lancer-css/src/application.scss'
+require('lancer-css/src/application.scss')
 
 Vue.config.debug = true
 
@@ -25,6 +25,7 @@ configRouter(router)
 router.beforeEach(function () {
   window.scrollTo(0, 0)
 })
+
 router.redirect({
   '*': '/home'
 })
