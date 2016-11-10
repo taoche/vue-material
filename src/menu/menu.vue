@@ -2,10 +2,11 @@
 <div class="menu-wrapper"
   v-if="show"
   v-el:menu
-  :style="{width: width,
+  :style="{
+    width: width,
     left: positionData.left +'px',
     top: positionData.top +'px',
-    transformOrigin: origin}"
+    transformOrigin: origin }"
   transition="menu">
 
   <div class="menu-container" :style="{font: size}">
@@ -30,12 +31,6 @@
 
 <script>
 export default {
-  data(){
-    return {
-      positionData: {},
-      origin: 'left top'
-    }
-  },
   props: {
     show: {
       type: Boolean,
@@ -55,11 +50,16 @@ export default {
     width: String,
     size: String
   },
+  data(){
+    return {
+      positionData: {},
+      origin: 'left top'
+    }
+  },
   watch:{
     target(){
       this.$nextTick(()=> {
-        if(!this.$els.menu) return false;
-
+        if(!this.$els.menu) return false
         this.positionData = this.computedPositon(this.target)
       })
     }
@@ -77,7 +77,8 @@ export default {
 
       let setDirection = {
         leftBottom:() => {
-          this.origin = 'left top';
+          this.origin = 'left top'
+
           return {
             left: _tLeft,
             top: _tTop + _tHeight
@@ -91,14 +92,16 @@ export default {
           }
         },
         leftTop:() => {
-          this.origin = 'left bottom';
+          this.origin = 'left bottom'
+
           return {
             left: _tLeft,
             top: _tTop - _sHeight
           }
         },
         rightTop:() => {
-          this.origin = 'right bottom';
+          this.origin = 'right bottom'
+
           return {
             left: _tLeft + _tWidth - _sWidth,
             top: _tTop - _sHeight

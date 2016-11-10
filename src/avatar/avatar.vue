@@ -2,7 +2,7 @@
 <div class="component-avatar">
   <div class="avatar" :class="{'is-letter': !src }">
     <span v-if="src" class="img"
-      :style="{'background-image': imageSrc,
+      :style="{'background-image': `url("${src}")`,
       'background-size': 'cover'}"></span>
     <span v-else class="letter">{{letter}}</span>
   </div>
@@ -16,11 +16,6 @@ export default {
     src: String,
     letter: {
       default: '未'
-    }
-  },
-  computed: {
-    imageSrc () {
-      return `url("${this.src}")`
     }
   }
 }

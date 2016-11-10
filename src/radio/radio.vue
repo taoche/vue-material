@@ -2,8 +2,9 @@
 <div class="component-radio radio"
   v-ripple.static
   @click="changeState"
-  :class="{active: activeName === name,
-    disabled: state === 'disabled'}">
+  :class="{
+    active: activeName === name,
+    disabled: state === 'disabled' }">
   <input class="radio-tag" type="radio">
   <div class="radio-bd">
     <span class="radio-indicator"></span>

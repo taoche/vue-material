@@ -1,7 +1,6 @@
 <template>
 <div class="component-pagination" v-if="pageLength > 1">
   <ul class="pagination">
-
     <li class="prev"
       :class="{disabled:currentPage === 1}"
       @click.stop="prevPage">
@@ -11,14 +10,15 @@
     </li>
 
     <li v-for="item of pageArr" track-by="$index"
-      :class.stop="{active: item.isCurrent,
-        'not-page': item.notPage}"
+      :class.stop="{
+        'active': item.isCurrent,
+        'not-page': item.notPage }"
       @click="selectPage(item.page,$event)">
       <a href="javascript:void(0)">{{item.page}}</a>
     </li>
 
     <li class="next"
-      :class="{disabled:currentPage  === pageLength}"
+      :class="{disabled:currentPage === pageLength}"
       @click.stop="nextPage">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="8px" height="15px" viewBox="0 0 50 80" xml:space="preserve">
         <polyline fill="none" stroke="#4e647b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8"/>
