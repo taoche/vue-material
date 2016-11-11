@@ -59,11 +59,11 @@ export default {
   },
   methods: {
     clickLeftHandle () {
-      this.currentIndex = Math.max(currentIndex - 1, 0)
+      this.currentIndex = Math.max(this.currentIndex - 1, 0)
       this.$emit('handleChang')
     },
     clickRightHandle () {
-      this.currentIndex = Math.min(currentIndex + 1, collectionsLength)
+      this.currentIndex = Math.min(this.currentIndex + 1, this.collectionsLength)
       this.$emit('handleChang')
     }
   }

@@ -1,8 +1,8 @@
 import Avatar from './avatar/avatar'
 import Buttons from './buttons/buttons'
-import Crad from './crad/crad'
+import Card from './card/card'
 import Checkbox from './checkbox/checkbox'
-import DetePicker from './detePicker/detePicker'
+import DatePicker from './datePicker/datePicker'
 import Dialog from './dialog/dialog'
 import Input from './input/input'
 import Menu from './menu/menu'
@@ -21,9 +21,9 @@ import Tooltips from './tooltips/tooltips'
 export const components = {
   Avatar,
   Buttons,
-  Crad,
+  Card,
   Checkbox,
-  DetePicker,
+  DatePicker,
   Dialog,
   Input,
   Menu,
@@ -41,9 +41,9 @@ export const components = {
 }
 
 export default {
-  install (Vue) {
+  install (Vue, options) {
     Object.keys(components).forEach((name) => {
-      Vue.component(name, components[name])
+      Vue.component(`${options.prefix}${name}`, components[name])
     })
   }
 }

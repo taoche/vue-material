@@ -1,8 +1,10 @@
 <template>
 <div class="component-avatar">
   <div class="avatar" :class="{'is-letter': !src }">
-    <span v-if="src" class="img"
-      :style="{'background-image': `url("${src}")`,
+    <span class="img"
+      v-if="src"
+      :style="{
+      'background-image': `url(${src})`,
       'background-size': 'cover'}"></span>
     <span v-else class="letter">{{letter}}</span>
   </div>

@@ -50,22 +50,22 @@ export default {
     width: String,
     size: String
   },
-  data(){
+  data () {
     return {
       positionData: {},
       origin: 'left top'
     }
   },
-  watch:{
-    target(){
-      this.$nextTick(()=> {
-        if(!this.$els.menu) return false
+  watch: {
+    target () {
+      this.$nextTick(() => {
+        if (!this.$els.menu) return false
         this.positionData = this.computedPositon(this.target)
       })
     }
   },
   methods: {
-    computedPositon(target){
+    computedPositon (target) {
       let _tPosition = target.getBoundingClientRect()
       let _tWidth = _tPosition.width
       let _tHeight = _tPosition.height
@@ -76,7 +76,7 @@ export default {
       let domMenu = this.$els.menu
 
       let setDirection = {
-        leftBottom:() => {
+        leftBottom: () => {
           this.origin = 'left top'
 
           return {
@@ -84,14 +84,15 @@ export default {
             top: _tTop + _tHeight
           }
         },
-        rightBottom:() => {
-          this.origin = 'right top';
+        rightBottom: () => {
+          this.origin = 'right top'
+
           return {
             left: _tLeft + _tWidth - _sWidth,
             top: _tTop + _tHeight
           }
         },
-        leftTop:() => {
+        leftTop: () => {
           this.origin = 'left bottom'
 
           return {
@@ -99,7 +100,7 @@ export default {
             top: _tTop - _sHeight
           }
         },
-        rightTop:() => {
+        rightTop: () => {
           this.origin = 'right bottom'
 
           return {
