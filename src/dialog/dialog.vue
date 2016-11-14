@@ -40,20 +40,26 @@ export default {
       type: Boolean,
       default: false
     },
-    onSure: Function,
-    onCancel: Function
+    onSure: {
+      type: Function,
+      required: true
+    },
+    onCancel: {
+      type: Function,
+      required: true
+    }
   },
   methods: {
     dialogMaskHandle (event) {
       if (event.target.classList.contains('dialog-wrap')) {
-        this.$destroy()
+        this.onCancel()
       }
     },
     cancelHandle () {
-      this.onCancel && this.onCancel()
+      this.onCancel()
     },
     sureHandle () {
-      this.onSure && this.onSure()
+      this.onSure()
     }
   }
 }
@@ -76,7 +82,6 @@ export default {
     display: table-cell;
     vertical-align: middle;
     .dialog-container {
-      position: relative;
       margin: 0 auto;
       padding: 14px;
       transition: all .3s ease;

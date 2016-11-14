@@ -84,19 +84,14 @@ import code from '../example-code'
 
 export default {
   name: 'example-avatar',
+  components: {
+    'component-button': buttons,
+    'example-code': code
+  },
   events: {
     'example-btn-event' () {
       window.alert('example-btn-event')
     }
-  },
-
-  components: {
-    'component-button': buttons,
-    'example-code': code
   }
 }
 </script>
-
-<style lang="scss">
-
-</style>
