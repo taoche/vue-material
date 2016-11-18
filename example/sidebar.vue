@@ -16,7 +16,7 @@
 </template>
 
 <script>
-const componentList = ['avatar', 'buttons', 'checkbox', 'datePicker', 'dialog', 'input', 'pagination', 'radio', 'search', 'select', 'switch', 'tooltips', 'snackbar', 'tables', 'tabs']
+const componentList = ['avatar', 'buttons', 'checkbox', 'datePicker', 'dialog', 'input', 'pagination', 'radio', 'radioGroup', 'search', 'select', 'switch', 'tooltips', 'snackbar', 'tables', 'tabs']
 
 export default {
   name: 'sidebar',

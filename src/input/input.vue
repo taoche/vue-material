@@ -1,6 +1,6 @@
 <template>
 <div class="component-input">
-  <input class="m-input" required
+  <input class="input" required
     v-model="value"
     :type="type"
     :placeHolder="hint"
@@ -49,7 +49,7 @@ export default {
 .component-input {
   position: relative;
   display: inline-block;
-  .m-input {
+  .input {
     font-size: 16px;
     line-height: 32px;
     position: relative;

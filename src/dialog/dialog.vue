@@ -40,14 +40,8 @@ export default {
       type: Boolean,
       default: false
     },
-    onSure: {
-      type: Function,
-      required: true
-    },
-    onCancel: {
-      type: Function,
-      required: true
-    }
+    onSure: Function,
+    onCancel: Function
   },
   methods: {
     dialogMaskHandle (event) {

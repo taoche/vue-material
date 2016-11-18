@@ -1,28 +1,22 @@
 <template>
   <div class="example-radio">
     <h3>基础使用</h3>
-    <component-radio :active-name.sync="activeName" name="example1"></component-radio>
-    <component-radio :active-name.sync="activeName" name="example2"></component-radio>
-    <component-radio :active-name.sync="activeName" state="disabled"></component-radio>
-
-    <code class="example">
-      选择的radio : {{activeName | json}}
-    </code>
+    <component-radio name="example1" value="example1" :model.sync="model"></component-radio>
+    <component-radio name="example2" label="男" checked></component-radio>
+    <component-radio name="example3" label="女" label-right></component-radio>
+    <component-radio name="example4" :disabled="true"></component-radio>
 
     <example-code>
       <textarea>
-      <component-radio :active-name.sync="activeName" name="example1"></component-radio>
-      <component-radio :active-name.sync="activeName" name="example2"></component-radio>
-      <component-radio :active-name.sync="activeName" state="disabled"></component-radio>
+      <component-radio name="example1" value="example1"></component-radio>
+      <component-radio name="example2" label="男" checked></component-radio>
+      <component-radio name="example3" label="女" label-right></component-radio>
+      <component-radio name="example4" :disabled="true"></component-radio>
 
       data () {
         return {
-          activeName: 'example1'
-        }
-      },
-      events: {
-        'radio-click' (state) {
-          window.alert(state)
+          example1: '0',
+          model: ''
         }
       }
       </textarea>
@@ -36,22 +30,21 @@ import code from '../example-code'
 
 export default {
   name: 'example-radio',
-  data () {
-    return {
-      activeName: 'example1'
-    }
-  },
-  events: {
-    'radio-click' (state) {
-      window.alert(state)
-    }
-  },
   components: {
     'component-radio': radio,
     'example-code': code
+  },
+  data () {
+    return {
+      example1: '0',
+      model: ''
+    }
   }
 }
 </script>
 
 <style lang="scss">
+.component-radio {
+  margin: 0 6px;
+}
 </style>

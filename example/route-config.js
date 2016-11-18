@@ -36,6 +36,10 @@ export function configRouter (router) {
       name: 'radio',
       component: require('./components/radio')
     },
+    '/radioGroup': {
+      name: 'radioGroup',
+      component: require('./components/radioGroup')
+    },
     '/search': {
       name: 'search',
       component: require('./components/search')
