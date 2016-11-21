@@ -8,6 +8,7 @@ import Input from './input/input'
 import Menu from './menu/menu'
 import Pagination from './pagination/pagination'
 import Radio from './radio/radio'
+import RadioGroup from './radio/radioGroup'
 import Search from './search/search'
 import Select from './select/select'
 import Slider from './slider/slider'
@@ -29,6 +30,7 @@ export const components = {
   Menu,
   Pagination,
   Radio,
+  RadioGroup,
   Search,
   Select,
   Slider,
