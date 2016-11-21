@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
-    "lib": "webpack --progress --hide-modules --config ./build/webpack.publish.conf.js && npm publish",
+    "lib": "webpack --progress --hide-modules --config ./build/webpack.publish.conf.js",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "devDependencies": {
