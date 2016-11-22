@@ -8,9 +8,9 @@
       v-for="option of options"
       :name="name"
       :model.sync="value"
-      :label="option.text || option"
-      :value="option.value || option || ''"
-      :disabled="disabled || option.disabled"
+      :label="option.text"
+      :value="option.value"
+      :disabled="option.disabled"
       :label-right="labelRight">
     </component-radio>
   </div>
