@@ -9,9 +9,9 @@
       :name="name"
       :model.sync="value"
       :label="option.text || option"
-      :value="option.value || option"
+      :value="option.value || option || ''"
       :disabled="disabled || option.disabled"
-      :label-right>
+      :label-right="labelRight">
     </component-radio>
   </div>
 </div>

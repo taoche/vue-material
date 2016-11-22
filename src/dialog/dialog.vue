@@ -94,6 +94,10 @@ export default {
         flex-direction: row-reverse;
 
         flex-wrap: wrap;
+
+        .component-button {
+          margin: 0 6px;
+        }
       }
     }
   }
